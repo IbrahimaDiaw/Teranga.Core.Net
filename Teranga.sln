@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AD270353-0619-4996-BB6D-049B8163489E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F894B330-32D3-4295-956B-0357937E6499}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teranga.Core", "Teranga.Core\Teranga.Core.csproj", "{768D6A4A-B30C-4C21-991D-E04510A45053}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teranga.Core.Tests", "Teranga.Core.Tests\Teranga.Core.Tests.csproj", "{F3129DD7-E1EF-45AF-88A0-02CE67809C03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{34705F2D-7454-4EE3-8D9B-F2C3C8E16982}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\ibnuo\Downloads\LICENSE.md = C:\Users\ibnuo\Downloads\LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{768D6A4A-B30C-4C21-991D-E04510A45053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768D6A4A-B30C-4C21-991D-E04510A45053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768D6A4A-B30C-4C21-991D-E04510A45053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768D6A4A-B30C-4C21-991D-E04510A45053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3129DD7-E1EF-45AF-88A0-02CE67809C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3129DD7-E1EF-45AF-88A0-02CE67809C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3129DD7-E1EF-45AF-88A0-02CE67809C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3129DD7-E1EF-45AF-88A0-02CE67809C03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{768D6A4A-B30C-4C21-991D-E04510A45053} = {AD270353-0619-4996-BB6D-049B8163489E}
+		{F3129DD7-E1EF-45AF-88A0-02CE67809C03} = {F894B330-32D3-4295-956B-0357937E6499}
+	EndGlobalSection
+EndGlobal

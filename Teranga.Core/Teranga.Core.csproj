@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <PackageId>Teranga.Core</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Ibrahima DIAW</Authors>
+    <Company>YourCompany</Company>
+    <Description>Core library for managing Senegal's administrative data and more</Description>
+    <PackageTags>senegal;administrative;regions;departments;communes</PackageTags>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+  </ItemGroup>
+
+</Project>

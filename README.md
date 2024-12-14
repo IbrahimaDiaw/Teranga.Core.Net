@@ -37,17 +37,17 @@ services.AddTerangaCore();
 ```csharp
 public class Example
 {
-    private readonly IAdministrativeService _adminService;
+    private readonly ITerangaService _terangaService;
 
-    public Example(IAdministrativeService adminService)
+    public Example(ITerangaService terangaService)
     {
-        _adminService = adminService;
+        _terangaService = terangaService;
     }
 
     public async Task GetRegionExample()
     {
-        var regions = await _adminService.GetAllRegionsAsync();
-        var dakar = await _adminService.GetRegionByCodeAsync("DK");
+        var regions = await _terangaService.GetAllRegionsAsync();
+        var dakar = await _terangaService.GetRegionByCodeAsync("DK");
     }
 }
 ```

@@ -21,7 +21,7 @@ namespace Teranga.Core.Services
         public TerangaService(ILogger<TerangaService> logger)
         {
             _logger = logger;
-            LoadInitialData().Wait();
+            LoadData();
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Teranga.Core.Services
             await _semaphore.WaitAsync();
             try
             {
-                await LoadInitialData();
+                LoadData();
                 _logger.LogInformation("Teranga data reloaded successfully");
             }
             finally
@@ -203,12 +203,22 @@ namespace Teranga.Core.Services
             }
         }
 
-        private async Task LoadInitialData()
+        private void LoadData()
         {
             try
             {
-                string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "teranga-data.json");
-                string jsonContent = await File.ReadAllTextAsync(jsonPath);
+                var assembly = typeof(TerangaService).Assembly;
+                var resourceName = "Teranga.Core.Data.teranga-data.json";
+
+                using var stream = assembly.GetManifestResourceStream(resourceName);
+                if (stream == null)
+                {
+                    throw new TerangaException("Resource not found: " + resourceName);
+                }
+
+                using var reader = new StreamReader(stream);
+                var jsonContent = reader.ReadToEnd();
+
                 _terangaData = JsonSerializer.Deserialize<TerangaData>(jsonContent, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
@@ -218,8 +228,6 @@ namespace Teranga.Core.Services
                 {
                     throw new TerangaException("Failed to deserialize Teranga data");
                 }
-
-                _logger.LogInformation("Teranga data loaded successfully. Found {RegionCount} regions", _terangaData.Regions.Count);
             }
             catch (Exception ex)
             {

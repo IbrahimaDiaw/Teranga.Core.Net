@@ -5,18 +5,30 @@ using Teranga.Core.Models;
 
 namespace Teranga.Core.Services
 {
+    /// <summary>
+    /// Service to retrieve Teranga data
+    /// </summary>
     public class TerangaService : ITerangaService
     {
         private readonly ILogger<TerangaService> _logger;
         private TerangaData? _terangaData;
         private readonly SemaphoreSlim _semaphore = new(1, 1);
 
+        /// <summary>
+        ///  Initializes a new instance of the <see cref="TerangaService"/> class.
+        ///  <param name="logger"></param>
+        /// </summary>
         public TerangaService(ILogger<TerangaService> logger)
         {
             _logger = logger;
             LoadInitialData().Wait();
         }
 
+        /// <summary>
+        /// Get the Teranga data
+        /// <returns></returns>
+        /// <exception cref="TerangaException"></exception>
+        /// </summary>
         public async Task<TerangaData> GetTerangaDataAsync()
         {
             await _semaphore.WaitAsync();
@@ -35,6 +47,10 @@ namespace Teranga.Core.Services
             }
         }
 
+        /// <summary>
+        /// Get all the regions
+        /// <returns></returns>
+        /// </summary>
         public async Task<IEnumerable<Region>> GetAllRegionsAsync()
         {
             await _semaphore.WaitAsync();
@@ -48,7 +64,12 @@ namespace Teranga.Core.Services
                 _semaphore.Release();
             }
         }
-
+        /// <summary>
+        /// Get the region by code
+        /// <param name="code"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// </summary>
         public async Task<Region?> GetRegionByCodeAsync(string code)
         {
             if (string.IsNullOrWhiteSpace(code))
@@ -66,8 +87,13 @@ namespace Teranga.Core.Services
                 _semaphore.Release();
             }
         }
-
-        public async Task<IEnumerable<Department>> GetDepartmentsByRegionAsync(string regionCode)
+        /// <summary>
+        /// Get the departments by region
+        /// <param name="regionCode"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// </summary>
+        public async Task<IEnumerable<Departement>> GetDepartmentsByRegionAsync(string regionCode)
         {
             if (string.IsNullOrWhiteSpace(regionCode))
                 throw new ArgumentNullException(nameof(regionCode));
@@ -78,15 +104,20 @@ namespace Teranga.Core.Services
                 _logger.LogInformation("Retrieving departments for region: {RegionCode}", regionCode);
                 var region = _terangaData?.Regions
                     .FirstOrDefault(r => r.Code.Equals(regionCode, StringComparison.OrdinalIgnoreCase));
-                return region?.Departments ?? Enumerable.Empty<Department>();
+                return region?.Departments ?? Enumerable.Empty<Departement>();
             }
             finally
             {
                 _semaphore.Release();
             }
         }
-
-        public async Task<Department?> GetDepartmentByCodeAsync(string code)
+        /// <summary>
+        /// Get the department by code
+        /// <param name="code"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// </summary>
+        public async Task<Departement?> GetDepartmentByCodeAsync(string code)
         {
             if (string.IsNullOrWhiteSpace(code))
                 throw new ArgumentNullException(nameof(code));
@@ -104,7 +135,12 @@ namespace Teranga.Core.Services
                 _semaphore.Release();
             }
         }
-
+        /// <summary>
+        /// Get the communes by department
+        /// <param name="departmentCode"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// </summary>
         public async Task<IEnumerable<Commune>> GetCommunesByDepartmentAsync(string departmentCode)
         {
             if (string.IsNullOrWhiteSpace(departmentCode))
@@ -124,7 +160,12 @@ namespace Teranga.Core.Services
                 _semaphore.Release();
             }
         }
-
+        /// <summary>
+        /// Get the commune by code
+        /// <param name="code"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// </summary>
         public async Task<Commune?> GetCommuneByCodeAsync(string code)
         {
             if (string.IsNullOrWhiteSpace(code))
@@ -144,7 +185,10 @@ namespace Teranga.Core.Services
                 _semaphore.Release();
             }
         }
-
+        /// <summary>
+        /// Reload the data
+        /// <returns></returns>
+        /// </summary>
         public async Task ReloadDataAsync()
         {
             await _semaphore.WaitAsync();

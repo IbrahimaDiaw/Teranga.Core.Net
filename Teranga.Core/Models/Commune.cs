@@ -1,7 +1,13 @@
 ﻿namespace Teranga.Core.Models
 {
+    /// <summary>
+    /// The commune of a departement
+    /// </summary>
     public class Commune : BaseEntity
     {
-        public string DepartmentCode { get; set; } = default!;
+        /// <summary>
+        /// The departement code of the commune
+        /// </summary>
+        public string DepartementCode { get; set; } = default!;
     }
 }

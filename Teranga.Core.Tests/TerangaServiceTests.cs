@@ -145,6 +145,7 @@ namespace Teranga.Core.Tests
         public async Task GetTerangaDataAsync_WithInvalidJson_ShouldThrowTerangaException()
         {
             // Arrange
+            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "teranga-data.json"), "invalid json");
             var service = new TerangaService(_loggerMock.Object);
 
@@ -171,9 +172,9 @@ namespace Teranga.Core.Tests
                     {
                         Code = "DK",
                         Name = "Dakar",
-                        Departments = new List<Department>
+                        Departments = new List<Departement>
                         {
-                            new Department
+                            new Departement
                             {
                                 Code = "DK1",
                                 Name = "Dakar",
@@ -184,7 +185,7 @@ namespace Teranga.Core.Tests
                                     {
                                         Code = "DK1C1",
                                         Name = "Plateau",
-                                        DepartmentCode = "DK1",
+                                        DepartementCode = "DK1",
                                     }
                                 }
                             }

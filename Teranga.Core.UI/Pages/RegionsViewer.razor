@@ -1,0 +1,106 @@
+﻿@page "/regions"
+@using Teranga.Core.Models
+@using Teranga.Core.Services
+@inject ITerangaService TerangaService
+
+<h3>Régions du Sénégal</h3>
+
+@if (_loading)
+{
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+}
+else if (_regions?.Any() != true)
+{
+    <div class="alert alert-info">Aucune région trouvée.</div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group">
+                @foreach (var region in _regions)
+                {
+                    <button class="list-group-item list-group-item-action @(_selectedRegion?.Code == region.Code ? "active" : "")"
+                            @onclick="() => SelectRegion(region)">
+                        @region.Name
+                    </button>
+                }
+            </div>
+        </div>
+        <div class="col-md-8">
+            @if (_selectedRegion != null)
+            {
+                <div class="card">
+                    <div class="card-header">
+                        <h4>@_selectedRegion.Name</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Code:</strong> @_selectedRegion.Code</p>
+                        <p><strong>Description:</strong> @_selectedRegion.Description</p>
+
+                        @if (_departments?.Any() == true)
+                        {
+                            <h5 class="mt-4">Départements:</h5>
+                            <div class="list-group">
+                                @foreach (var dept in _departments)
+                                {
+                                    <div class="list-group-item">
+                                        <h6>@dept.Name</h6>
+                                        @if (_communesByDepartment.ContainsKey(dept.Code))
+                                        {
+                                            <small>Communes:</small>
+                                            <ul class="list-unstyled ms-3">
+                                                @foreach (var commune in _communesByDepartment[dept.Code])
+                                                {
+                                                    <li>@commune.Name</li>
+                                                }
+                                            </ul>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    private bool _loading = true;
+    private IEnumerable<Region>? _regions;
+    private Region? _selectedRegion;
+    private IEnumerable<Departement>? _departments;
+    private Dictionary<string, IEnumerable<Commune>> _communesByDepartment = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _regions = await TerangaService.GetAllRegionsAsync();
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private async Task SelectRegion(Region region)
+    {
+        _selectedRegion = region;
+        _departments = await TerangaService.GetDepartmentsByRegionAsync(region.Code);
+
+        _communesByDepartment.Clear();
+        if (_departments != null)
+        {
+            foreach (var dept in _departments)
+            {
+                var communes = await TerangaService.GetCommunesByDepartmentAsync(dept.Code);
+                _communesByDepartment[dept.Code] = communes;
+            }
+        }
+    }
+}

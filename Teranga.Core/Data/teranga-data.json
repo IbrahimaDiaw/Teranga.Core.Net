@@ -1,3 +1,2524 @@
 {
+  "code": "SN",
+  "name": "Sénégal",
+  "description": "République du Sénégal",
+  "population": 18126390,
+  "area": 196712,
+  "capital": "Dakar",
+  "currency": "XOF",
+  "language": "Français",
+  "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/1280px-Flag_of_Senegal.svg.png",
+  "localLanguages": [
+    "Wolof",
+    "Pulaar",
+    "Sérère",
+    "Diola",
+    "Mandingue",
+    "Soninké",
+    "Balante",
+    "Manjak",
+    "Bambara",
+    "Cérère",
+    "Mankanya",
+    "Bassari",
+    "Bédik",
+    "Jalonké",
+    "Konyagi",
+    "Mandjak",
+    "Sarakhollé"
+  ],
+  "continent": "Afrique",
+  "timeZone": "UTC",
 
+  "regions": [
+    {
+      "code": "DK",
+      "name": "Dakar",
+      "description": "Région de Dakar",
+      "departements": [
+        {
+          "code": "DK1",
+          "name": "Dakar",
+          "description": "Département de Dakar",
+          "regionCode": "DK",
+          "communes": [
+            {
+              "code": "DK1C1",
+              "name": "Biscuiterie",
+              "description": "Commune de Biscuiterie",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C2",
+              "name": "Cambérène",
+              "description": "Commune de Cambérène",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C3",
+              "name": "Dieuppeul-Derklé",
+              "description": "Commune de Dieuppeul-Derklé",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C4",
+              "name": "Fann-Point E-Amitié",
+              "description": "Commune de Fann-Point E-Amitié",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C5",
+              "name": "Gueule Tapée-Fass-Colobane",
+              "description": "Commune de Gueule Tapée-Fass-Colobane",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C6",
+              "name": "Gorée",
+              "description": "Commune de Gorée",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C7",
+              "name": "Grand Dakar",
+              "description": "Commune de Grand Dakar",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C8",
+              "name": "Grand Yoff",
+              "description": "Commune de Grand Yoff",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C9",
+              "name": "Hann Bel-Air",
+              "description": "Commune de Hann Bel-Air",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C10",
+              "name": "HLM",
+              "description": "Commune des HLM",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C11",
+              "name": "Médina",
+              "description": "Commune de la Médina",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C12",
+              "name": "Mermoz-Sacré Cœur",
+              "description": "Commune de Mermoz-Sacré Cœur",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C13",
+              "name": "Ngor",
+              "description": "Commune de Ngor",
+              "departementCode": "DK1"
+            },
+            {
+              "code": "DK1C14",
+              "name": "Ouakam",
+              "description": "Commune de Ouakam",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C15",
+              "name": "Parcelles Assainies",
+              "description": "Commune des Parcelles Assainies",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C16",
+              "name": "Patte d'Oie",
+              "description": "Commune de la Patte d'Oie",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C17",
+              "name": "Plateau",
+              "description": "Commune du Plateau",
+              "departementCode": "DK1"
+
+            },
+            {
+              "code": "DK1C18",
+              "name": "Yoff",
+              "description": "Commune de Yoff",
+              "departementCode": "DK1"
+
+            }
+          ]
+        },
+        {
+          "code": "DK2",
+          "name": "Guédiawaye",
+          "description": "Département de Guédiawaye",
+          "regionCode": "DK",
+          "communes": [
+            {
+              "code": "DK2C1",
+              "name": "Golf Sud",
+              "description": "Commune de Golf Sud",
+              "departementCode": "DK2"
+
+            },
+            {
+              "code": "DK2C2",
+              "name": "Médina Gounass",
+              "description": "Commune de Médina Gounass",
+              "departementCode": "DK2"
+
+            },
+            {
+              "code": "DK2C3",
+              "name": "Ndiarème Limamoulaye",
+              "description": "Commune de Ndiarème Limamoulaye",
+              "departementCode": "DK2"
+
+            },
+            {
+              "code": "DK2C4",
+              "name": "Sam Notaire",
+              "description": "Commune de Sam Notaire",
+              "departementCode": "DK2"
+            },
+            {
+              "code": "DK2C5",
+              "name": "Wakhinane Nimzatt",
+              "description": "Commune de Wakhinane Nimzatt",
+              "departementCode": "DK2"
+            }
+          ]
+        },
+        {
+          "code": "DK3",
+          "name": "Pikine",
+          "description": "Département de Pikine",
+          "regionCode": "DK",
+          "communes": [
+            {
+              "code": "DK3C1",
+              "name": "Thiaroye Gare",
+              "description": "Commune de Thiaroye Gare",
+              "departementCode": "DK3"
+
+            },
+            {
+              "code": "DK3C2",
+              "name": "Djeddha Thiaroye Kao",
+              "description": "Commune de Djeddha Thiaroye Kao",
+              "departementCode": "DK3"
+
+            },
+            {
+              "code": "DK3C3",
+              "name": "Guinaw Rail Nord",
+              "description": "Commune de Guinaw Rail Nord",
+              "departementCode": "DK3"
+
+            },
+            {
+              "code": "DK3C4",
+              "name": "Guinaw Rail Sud",
+              "description": "Commune de Guinaw Rail Sud",
+              "departementCode": "DK3"
+            },
+            {
+              "code": "DK3C5",
+              "name": "Pikine Est",
+              "description": "Commune de Pikine Est",
+              "departementCode": "DK3"
+            },
+            {
+              "code": "DK3C6",
+              "name": "Pikine Nord",
+              "description": "Commune de Pikine Nord",
+              "departementCode": "DK3"
+            },
+            {
+              "code": "DK3C7",
+              "name": "Pikine Ouest",
+              "description": "Commune de Pikine Ouest",
+              "departementCode": "DK3"
+            },
+            {
+              "code": "DK3C8",
+              "name": "Thiaroye sur Mer",
+              "description": "Commune de Thiaroye sur Mer",
+              "departementCode": "DK3"
+            },
+            {
+              "code": "DK3C9",
+              "name": "Mbao",
+              "description": "Commune de Mbao",
+              "departementCode": "DK3"
+            }
+          ]
+        },
+        {
+          "code": "DK4",
+          "name": "Rufisque",
+          "description": "Département de Rufisque",
+          "regionCode": "DK",
+          "communes": [
+            {
+              "code": "DK4C1",
+              "name": "Rufisque Est",
+              "description": "Commune de Rufisque Est",
+              "departementCode": "DK4"
+            },
+            {
+              "code": "DK4C2",
+              "name": "Rufisque Nord",
+              "description": "Commune de Rufisque Nord",
+              "departementCode": "DK4"
+
+            },
+            {
+              "code": "DK4C3",
+              "name": "Rufisque Ouest",
+              "description": "Commune de Rufisque Ouest",
+              "departementCode": "DK4"
+
+            },
+            {
+              "code": "DK4C4",
+              "name": "Bargny",
+              "description": "Commune de Bargny",
+              "departementCode": "DK4"
+
+            },
+            {
+              "code": "DK4C5",
+              "name": "Diamniadio",
+              "description": "Commune de Diamniadio",
+              "departementCode": "DK4"
+
+            },
+            {
+              "code": "DK4C6",
+              "name": "Sébikhotane",
+              "description": "Commune de Sébikhotane",
+              "departementCode": "DK4"
+
+            },
+            {
+              "code": "DK4C7",
+              "name": "Bambylor",
+              "description": "Commune de Bambylor",
+              "departementCode": "DK4"
+
+            },
+            {
+              "code": "DK4C8",
+              "name": "Sangalkam",
+              "description": "Commune de Sangalkam",
+              "departementCode": "DK4"
+
+            },
+            {
+              "code": "DK4C9",
+              "name": "Jaxaay-Parcelles",
+              "description": "Commune de Jaxaay-Parcelles",
+              "departementCode": "DK4"
+
+            },
+            {
+              "code": "DK4C10",
+              "name": "Sendou",
+              "description": "Commune de Sendou",
+              "departementCode": "DK4"
+
+            },
+            {
+              "code": "DK4C11",
+              "name": "Tivaouane Peulh-Niaga",
+              "description": "Commune de Tivaouane Peulh-Niaga",
+              "departementCode": "DK4"
+
+            }
+          ]
+        },
+        {
+          "code": "DK5",
+          "name": "Keur Massar",
+          "description": "Département de Keur Massar",
+          "regionCode": "DK",
+          "communes": [
+            {
+              "code": "DK5C1",
+              "name": "Keur Massar Nord",
+              "description": "Commune de Keur Massar Nord",
+              "departementCode": "DK5"
+
+            },
+            {
+              "code": "DK5C2",
+              "name": "Keur Massar Sud",
+              "description": "Commune de Keur Massar Sud",
+              "departementCode": "DK5"
+
+            },
+            {
+              "code": "DK5C3",
+              "name": "Malika",
+              "description": "Commune de Malika",
+              "departementCode": "DK5"
+            },
+            {
+              "code": "DK5C4",
+              "name": "Yeumbeul Sud",
+              "description": "Commune de Yeumbeul Sud",
+              "departementCode": "DK5"
+            },
+            {
+              "code": "DK5C5",
+              "name": "Yeumbeul Nord",
+              "description": "Commune de Yeumbeul Nord",
+              "departementCode": "DK5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "TH",
+      "name": "Thiès",
+      "description": "Région de Thiès",
+      "departements": [
+        {
+          "code": "TH1",
+          "name": "Thiès",
+          "description": "Département de Thiès",
+          "regionCode": "TH",
+
+          "communes": [
+            {
+              "code": "TH1C1",
+              "name": "Thiès Est",
+              "description": "Commune de Thiès Est",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C2",
+              "name": "Thiès Ouest",
+              "description": "Commune de Thiès Ouest",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C3",
+              "name": "Thiès Nord",
+              "description": "Commune de Thiès Nord",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C4",
+              "name": "Kayar",
+              "description": "Commune de Kayar",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C5",
+              "name": "Khombole",
+              "description": "Commune de Khombole",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C6",
+              "name": "Pout",
+              "description": "Commune de Pout",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C7",
+              "name": "Tassette",
+              "description": "Commune de Tassette",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C8",
+              "name": "Notto Gouye Diama",
+              "description": "Commune de Notto Gouye Diama",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C9",
+              "name": "Fandène",
+              "description": "Commune de Fandène",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C10",
+              "name": "Keur Moussa",
+              "description": "Commune de Keur Moussa",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C11",
+              "name": "Diender Guedj",
+              "description": "Commune de Diender Guedj",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C12",
+              "name": "Thiénaba",
+              "description": "Commune de Thiénaba",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C13",
+              "name": "Ngoundiane",
+              "description": "Commune de Ngoundiane",
+              "departementCode": "TH1"
+
+            },
+            {
+              "code": "TH1C14",
+              "name": "Touba Toul",
+              "description": "Commune de Touba Toul",
+              "departementCode": "TH1"
+
+            }
+          ]
+        },
+        {
+          "code": "TH2",
+          "name": "Mbour",
+          "description": "Département de Mbour",
+          "regionCode": "TH",
+
+          "communes": [
+            {
+              "code": "TH2C1",
+              "name": "Mbour",
+              "description": "Commune de Mbour",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C2",
+              "name": "Joal-Fadiouth",
+              "description": "Commune de Joal-Fadiouth",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C3",
+              "name": "Ngaparou",
+              "description": "Commune de Ngaparou",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C4",
+              "name": "Saly Portudal",
+              "description": "Commune de Saly Portudal",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C5",
+              "name": "Somone",
+              "description": "Commune de Somone",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C6",
+              "name": "Thiadiaye",
+              "description": "Commune de Thiadiaye",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C7",
+              "name": "Nguékhokh",
+              "description": "Commune de Nguékhokh",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C8",
+              "name": "Popenguine-Ndayane",
+              "description": "Commune de Popenguine-Ndayane",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C9",
+              "name": "Fissel",
+              "description": "Commune de Fissel",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C10",
+              "name": "Ndiaganiao",
+              "description": "Commune de Ndiaganiao",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C11",
+              "name": "Malicounda",
+              "description": "Commune de Malicounda",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C12",
+              "name": "Diass",
+              "description": "Commune de Diass",
+              "departementCode": "TH2"
+
+            },
+            {
+              "code": "TH2C13",
+              "name": "Sindia",
+              "description": "Commune de Sindia",
+              "departementCode": "TH2"
+
+            }
+          ]
+        },
+        {
+          "code": "TH3",
+          "name": "Tivaouane",
+          "description": "Département de Tivaouane",
+          "regionCode": "TH",
+
+          "communes": [
+            {
+              "code": "TH3C1",
+              "name": "Tivaouane",
+              "description": "Commune de Tivaouane",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C2",
+              "name": "Mboro",
+              "description": "Commune de Mboro",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C3",
+              "name": "Mékhé",
+              "description": "Commune de Mékhé",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C4",
+              "name": "Pire Goureye",
+              "description": "Commune de Pire Goureye",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C5",
+              "name": "Méouane",
+              "description": "Commune de Méouane",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C6",
+              "name": "Darou Khoudoss",
+              "description": "Commune de Darou Khoudoss",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C7",
+              "name": "Taïba Ndiaye",
+              "description": "Commune de Taïba Ndiaye",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C8",
+              "name": "Ngaye Mékhé",
+              "description": "Commune de Ngaye Mékhé",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C9",
+              "name": "Mérina Dakhar",
+              "description": "Commune de Mérina Dakhar",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C10",
+              "name": "Koul",
+              "description": "Commune de Koul",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C11",
+              "name": "Pékesse",
+              "description": "Commune de Pékesse",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C12",
+              "name": "Pambal",
+              "description": "Commune de Pambal",
+              "departementCode": "TH3"
+
+            },
+            {
+              "code": "TH3C13",
+              "name": "Notto Gouye Diama",
+              "description": "Commune de Notto Gouye Diama",
+              "departementCode": "TH3"
+
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "DL",
+      "name": "Diourbel",
+      "description": "Région de Diourbel",
+      "departements": [
+        {
+          "code": "DL1",
+          "name": "Bambey",
+          "description": "Département de Bambey",
+          "regionCode": "DL",
+          "communes": [
+            {
+              "code": "DL1C1",
+              "name": "Bambey",
+              "description": "Commune de Bambey",
+              "departementCode": "DL1"
+
+            },
+            {
+              "code": "DL1C2",
+              "name": "Dinguiraye",
+              "description": "Commune de Dinguiraye",
+              "departementCode": "DL1"
+
+            },
+            {
+              "code": "DL1C3",
+              "name": "Gawane",
+              "description": "Commune de Gawane",
+              "departementCode": "DL1"
+
+            },
+            {
+              "code": "DL1C4",
+              "name": "Ngogom",
+              "description": "Commune de Ngogom",
+              "departementCode": "DL1"
+
+            },
+            {
+              "code": "DL1C5",
+              "name": "Lambaye",
+              "description": "Commune de Lambaye",
+              "departementCode": "DL1"
+
+            },
+            {
+              "code": "DL1C6",
+              "name": "Ngoye",
+              "description": "Commune de Ngoye",
+              "departementCode": "DL1"
+
+            },
+            {
+              "code": "DL1C7",
+              "name": "Thiakhar",
+              "description": "Commune de Thiakhar",
+              "departementCode": "DL1"
+
+            },
+            {
+              "code": "DL1C8",
+              "name": "Baba Garage",
+              "description": "Commune de Baba Garage",
+              "departementCode": "DL1"
+
+            }
+          ]
+        },
+        {
+          "code": "DL2",
+          "name": "Diourbel",
+          "description": "Département de Diourbel",
+          "regionCode": "DL",
+          "communes": [
+            {
+              "code": "DL2C1",
+              "name": "Diourbel",
+              "description": "Commune de Diourbel",
+              "departementCode": "DL2"
+
+            },
+            {
+              "code": "DL2C2",
+              "name": "Ndoulo",
+              "description": "Commune de Ndoulo",
+              "departementCode": "DL2"
+
+            },
+            {
+              "code": "DL2C3",
+              "name": "Ndindy",
+              "description": "Commune de Ndindy",
+              "departementCode": "DL2"
+
+            },
+            {
+              "code": "DL2C4",
+              "name": "Pattar",
+              "description": "Commune de Pattar",
+              "departementCode": "DL2"
+
+            },
+            {
+              "code": "DL2C5",
+              "name": "Tocky Gare",
+              "description": "Commune de Tocky Gare",
+              "departementCode": "DL2"
+
+            },
+            {
+              "code": "DL2C6",
+              "name": "Taiba Moustapha",
+              "description": "Commune de Taiba Moustapha",
+              "departementCode": "DL2"
+
+            }
+          ]
+        },
+        {
+          "code": "DL3",
+          "name": "Mbacké",
+          "description": "Département de Mbacké",
+          "regionCode": "DL",
+          "communes": [
+            {
+              "code": "DL3C1",
+              "name": "Mbacké",
+              "description": "Commune de Mbacké",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C2",
+              "name": "Touba Mosquée",
+              "description": "Commune de Touba Mosquée",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C3",
+              "name": "Dalla Ngabou",
+              "description": "Commune de Dalla Ngabou",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C4",
+              "name": "Missirah",
+              "description": "Commune de Missirah",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C5",
+              "name": "Nghaye",
+              "description": "Commune de Nghaye",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C6",
+              "name": "Touba Fall",
+              "description": "Commune de Touba Fall",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C7",
+              "name": "Darou Salam",
+              "description": "Commune de Darou Salam",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C8",
+              "name": "Darou Nahim",
+              "description": "Commune de Darou Nahim",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C9",
+              "name": "Kael",
+              "description": "Commune de Kael",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C10",
+              "name": "Madina",
+              "description": "Commune de Madina",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C11",
+              "name": "Taïf",
+              "description": "Commune de Taïf",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C12",
+              "name": "Dendèye Gouy Gui",
+              "description": "Commune de Dendèye Gouy Gui",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C13",
+              "name": "Ndioumane",
+              "description": "Commune de Ndioumane",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C14",
+              "name": "Taïba Thiékène",
+              "description": "Commune de Taïba Thiékène",
+              "departementCode": "DL3"
+
+            },
+            {
+              "code": "DL3C15",
+              "name": "Sadio",
+              "description": "Commune de Sadio",
+              "departementCode": "DL3"
+
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "KL",
+      "name": "Kaolack",
+      "description": "Région de Kaolack",
+      "departements": [
+        {
+          "code": "KL1",
+          "name": "Kaolack",
+          "description": "Département de Kaolack",
+          "regionCode": "KL",
+          "communes": [
+            {
+              "code": "KL1C1",
+              "name": "Kaolack",
+              "description": "Commune de Kaolack",
+              "departementCode": "KL1"
+
+            },
+            {
+              "code": "KL1C2",
+              "name": "Kahone",
+              "description": "Commune de Kahone",
+              "departementCode": "KL1"
+
+            },
+            {
+              "code": "KL1C3",
+              "name": "Ndoffane",
+              "description": "Commune de Ndoffane",
+              "departementCode": "KL1"
+
+            },
+            {
+              "code": "KL1C4",
+              "name": "Gandiaye",
+              "description": "Commune de Gandiaye",
+              "departementCode": "KL1"
+
+            },
+            {
+              "code": "KL1C5",
+              "name": "Sibassor",
+              "description": "Commune de Sibassor",
+              "departementCode": "KL1"
+
+            },
+            {
+              "code": "KL1C6",
+              "name": "Ndiaffate",
+              "description": "Commune de Ndiaffate",
+              "departementCode": "KL1"
+
+            },
+            {
+              "code": "KL1C7",
+              "name": "Thiomby",
+              "description": "Commune de Thiomby",
+              "departementCode": "KL1"
+
+            },
+            {
+              "code": "KL1C8",
+              "name": "Latmingué",
+              "description": "Commune de Latmingué",
+              "departementCode": "KL1"
+
+            },
+            {
+              "code": "KL1C9",
+              "name": "Thiare Ndialgui",
+              "description": "Commune de Thiare Ndialgui",
+              "departementCode": "KL1"
+
+            },
+            {
+              "code": "KL1C10",
+              "name": "Keur Baka",
+              "description": "Commune de Keur Baka",
+              "departementCode": "KL1"
+
+            },
+            {
+              "code": "KL1C11",
+              "name": "Ndiedieng",
+              "description": "Commune de Ndiedieng",
+              "departementCode": "KL1"
+
+            }
+          ]
+        },
+        {
+          "code": "KL2",
+          "name": "Nioro du Rip",
+          "description": "Département de Nioro du Rip",
+          "regionCode": "KL",
+          "communes": [
+            {
+              "code": "KL2C1",
+              "name": "Nioro du Rip",
+              "description": "Commune de Nioro du Rip",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C2",
+              "name": "Keur Madiabel",
+              "description": "Commune de Keur Madiabel",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C3",
+              "name": "Medina Sabakh",
+              "description": "Commune de Medina Sabakh",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C4",
+              "name": "Kayemor",
+              "description": "Commune de Kayemor",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C5",
+              "name": "Gainthe Kaye",
+              "description": "Commune de Gainthe Kaye",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C6",
+              "name": "Dabaly",
+              "description": "Commune de Dabaly",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C7",
+              "name": "Darou Salam",
+              "description": "Commune de Darou Salam",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C8",
+              "name": "Keur Maba Diakhou",
+              "description": "Commune de Keur Maba Diakhou",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C9",
+              "name": "Paos Koto",
+              "description": "Commune de Paos Koto",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C10",
+              "name": "Porokhane",
+              "description": "Commune de Porokhane",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C11",
+              "name": "Taiba Niassene",
+              "description": "Commune de Taiba Niassene",
+              "departementCode": "KL2"
+
+            },
+            {
+              "code": "KL2C12",
+              "name": "Wack Ngouna",
+              "description": "Commune de Wack Ngouna",
+              "departementCode": "KL2"
+
+            }
+          ]
+        },
+        {
+          "code": "KL3",
+          "name": "Guinguinéo",
+          "description": "Département de Guinguinéo",
+          "regionCode": "KL",
+          "communes": [
+            {
+              "code": "KL3C1",
+              "name": "Guinguinéo",
+              "description": "Commune de Guinguinéo",
+              "departementCode": "KL3"
+
+            },
+            {
+              "code": "KL3C2",
+              "name": "Mboss",
+              "description": "Commune de Mboss",
+              "departementCode": "KL3"
+
+            },
+            {
+              "code": "KL3C3",
+              "name": "Fass",
+              "description": "Commune de Fass",
+              "departementCode": "KL3"
+
+            },
+            {
+              "code": "KL3C4",
+              "name": "Gagnick",
+              "description": "Commune de Gagnick",
+              "departementCode": "KL3"
+
+            },
+            {
+              "code": "KL3C5",
+              "name": "Dara Mboss",
+              "description": "Commune de Dara Mboss",
+              "departementCode": "KL3"
+
+            },
+            {
+              "code": "KL3C6",
+              "name": "Ngathie Naoudé",
+              "description": "Commune de Ngathie Naoudé",
+              "departementCode": "KL3"
+
+            },
+            {
+              "code": "KL3C7",
+              "name": "Ngellou",
+              "description": "Commune de Ngellou",
+              "departementCode": "KL3"
+
+            },
+            {
+              "code": "KL3C8",
+              "name": "Khelcom – Birane",
+              "description": "Commune de Khelcom – Birane",
+              "departementCode": "KL3"
+
+            },
+            {
+              "code": "KL3C9",
+              "name": "Ndiago",
+              "description": "Commune de Ndiago",
+              "departementCode": "KL3"
+
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "KF",
+      "name": "Kaffrine",
+      "description": "Région de Kaffrine",
+      "departements": [
+        {
+          "code": "KF1",
+          "name": "Kaffrine",
+          "description": "Département de Kaffrine",
+          "regionCode": "KF",
+          "communes": [
+            {
+              "code": "KF1C1",
+              "name": "Kaffrine",
+              "description": "Commune de Kaffrine",
+              "departementCode": "KF1"
+            },
+            {
+              "code": "KF1C2",
+              "name": "Nganda",
+              "description": "Commune de Nganda",
+              "departementCode": "KF1"
+            },
+            {
+              "code": "KF1C3",
+              "name": "Diamagadio",
+              "description": "Commune de Diamagadio",
+              "departementCode": "KF1"
+            },
+            {
+              "code": "KF1C4",
+              "name": "Kathiote",
+              "description": "Commune de Kathiote",
+              "departementCode": "KF1"
+            },
+            {
+              "code": "KF1C5",
+              "name": "Médinatoul Salam 2",
+              "description": "Commune de Médinatoul Salam 2",
+              "departementCode": "KF1"
+            },
+            {
+              "code": "KF1C6",
+              "name": "Gniby",
+              "description": "Commune de Gniby",
+              "departementCode": "KF1"
+            },
+            {
+              "code": "KF1C7",
+              "name": "Boulel",
+              "description": "Commune de Boulel",
+              "departementCode": "KF1"
+            },
+            {
+              "code": "KF1C8",
+              "name": "Kahi",
+              "description": "Commune de Kahi",
+              "departementCode": "KF1"
+            }
+          ]
+        },
+        {
+          "code": "KF2",
+          "name": "Birkelane",
+          "description": "Département de Birkelane",
+          "regionCode": "KF",
+          "communes": [
+            {
+              "code": "KF2C1",
+              "name": "Birkelane",
+              "description": "Commune de Birkelane",
+              "departementCode": "KF2"
+            },
+            {
+              "code": "KF2C2",
+              "name": "Keur Mboucki",
+              "description": "Commune de Keur Mboucki",
+              "departementCode": "KF2"
+            },
+            {
+              "code": "KF2C3",
+              "name": "Touba Mbella",
+              "description": "Commune de Touba Mbella",
+              "departementCode": "KF2"
+            },
+            {
+              "code": "KF2C4",
+              "name": "Diamal",
+              "description": "Commune de Diamal",
+              "departementCode": "KF2"
+            },
+            {
+              "code": "KF2C5",
+              "name": "Mabo",
+              "description": "Commune de Mabo",
+              "departementCode": "KF2"
+            },
+            {
+              "code": "KF2C6",
+              "name": "Ndiognick",
+              "description": "Commune de Ndiognick",
+              "departementCode": "KF2"
+            },
+            {
+              "code": "KF2C7",
+              "name": "Ségré-gatta",
+              "description": "Commune de Ségré-gatta",
+              "departementCode": "KF2"
+            },
+            {
+              "code": "KF2C8",
+              "name": "Mbeuleup",
+              "description": "Commune de Mbeuleup",
+              "departementCode": "KF2"
+            }
+          ]
+        },
+        {
+          "code": "KF3",
+          "name": "Malem Hodar",
+          "description": "Département de Malem Hodar",
+          "regionCode": "KF",
+          "communes": [
+            {
+              "code": "KF3C1",
+              "name": "Malem Hodar",
+              "description": "Commune de Malem Hodar",
+              "departementCode": "KF3"
+            },
+            {
+              "code": "KF3C2",
+              "name": "Darou Minam 2",
+              "description": "Commune de Darou Minam 2",
+              "departementCode": "KF3"
+            },
+            {
+              "code": "KF3C3",
+              "name": "Ndiobène Samba Lamo",
+              "description": "Commune de Ndiobène Samba Lamo",
+              "departementCode": "KF3"
+            },
+            {
+              "code": "KF3C4",
+              "name": "Sagna",
+              "description": "Commune de Sagna",
+              "departementCode": "KF3"
+            },
+            {
+              "code": "KF3C5",
+              "name": "Ndioum Ngainth",
+              "description": "Commune de Ndioum Ngainth",
+              "departementCode": "KF3"
+            },
+            {
+              "code": "KF3C6",
+              "name": "Dianké Souf",
+              "description": "Commune de Dianké Souf",
+              "departementCode": "KF3"
+            }
+          ]
+        },
+        {
+          "code": "KF4",
+          "name": "Koungheul",
+          "description": "Département de Koungheul",
+          "regionCode": "KF",
+          "communes": [
+            {
+              "code": "KF4C1",
+              "name": "Koungheul",
+              "description": "Commune de Koungheul",
+              "departementCode": "KF4"
+            },
+            {
+              "code": "KF4C2",
+              "name": "Missirah Wadène",
+              "description": "Commune de Missirah Wadène",
+              "departementCode": "KF4"
+            },
+            {
+              "code": "KF4C3",
+              "name": "Maka Yop",
+              "description": "Commune de Maka Yop",
+              "departementCode": "KF4"
+            },
+            {
+              "code": "KF4C4",
+              "name": "Ngainthe Pathé",
+              "description": "Commune de Ngainthe Pathé",
+              "departementCode": "KF4"
+            },
+            {
+              "code": "KF4C5",
+              "name": "Fass Thiékène",
+              "description": "Commune de Fass Thiékène",
+              "departementCode": "KF4"
+            },
+            {
+              "code": "KF4C6",
+              "name": "Saly Escale",
+              "description": "Commune de Saly Escale",
+              "departementCode": "KF4"
+            },
+            {
+              "code": "KF4C7",
+              "name": "Ida Mouride",
+              "description": "Commune de Ida Mouride",
+              "departementCode": "KF4"
+            },
+            {
+              "code": "KF4C8",
+              "name": "Ribot Escale",
+              "description": "Commune de Ribot Escale",
+              "departementCode": "KF4"
+            },
+            {
+              "code": "KF4C9",
+              "name": "Lour Escale",
+              "description": "Commune de Lour Escale",
+              "departementCode": "KF4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "KD",
+      "name": "Kolda",
+      "description": "Région de Kolda",
+      "departements": [
+        {
+          "code": "KD1",
+          "name": "Kolda",
+          "description": "Département de Kolda",
+          "regionCode": "KD",
+          "communes": [
+            {
+              "code": "KD1C1",
+              "name": "Kolda",
+              "description": "Commune de Kolda",
+              "departementCode": "KD1"
+            },
+            {
+              "code": "KD1C2",
+              "name": "Dabo",
+              "description": "Commune de Dabo",
+              "departementCode": "KD1"
+            },
+            {
+              "code": "KD1C3",
+              "name": "Salikégné",
+              "description": "Commune de Salikégné",
+              "departementCode": "KD1"
+            },
+            {
+              "code": "KD1C4",
+              "name": "Médina Yoro Foulah",
+              "description": "Commune de Médina Yoro Foulah",
+              "departementCode": "KD1"
+            },
+            {
+              "code": "KD1C5",
+              "name": "Dioulacolon",
+              "description": "Commune de Dioulacolon",
+              "departementCode": "KD1"
+            },
+            {
+              "code": "KD1C6",
+              "name": "Tankanto Escale",
+              "description": "Commune de Tankanto Escale",
+              "departementCode": "KD1"
+            },
+            {
+              "code": "KD1C7",
+              "name": "Thiétty",
+              "description": "Commune de Thiétty",
+              "departementCode": "KD1"
+            }
+          ]
+        },
+        {
+          "code": "KD2",
+          "name": "Médina Yoro Foulah",
+          "description": "Département de Médina Yoro Foulah",
+          "regionCode": "KD",
+          "communes": [
+            {
+              "code": "KD2C1",
+              "name": "Médina Yoro Foulah",
+              "description": "Commune de Médina Yoro Foulah",
+              "departementCode": "KD2"
+            },
+            {
+              "code": "KD2C2",
+              "name": "Pata",
+              "description": "Commune de Pata",
+              "departementCode": "KD2"
+            },
+            {
+              "code": "KD2C3",
+              "name": "Kéréwane",
+              "description": "Commune de Kéréwane",
+              "departementCode": "KD2"
+            },
+            {
+              "code": "KD2C4",
+              "name": "Badion",
+              "description": "Commune de Badion",
+              "departementCode": "KD2"
+            },
+            {
+              "code": "KD2C5",
+              "name": "Fafacourou",
+              "description": "Commune de Fafacourou",
+              "departementCode": "KD2"
+            },
+            {
+              "code": "KD2C6",
+              "name": "Bignarabé",
+              "description": "Commune de Bignarabé",
+              "departementCode": "KD2"
+            }
+          ]
+        },
+        {
+          "code": "KD3",
+          "name": "Vélingara",
+          "description": "Département de Vélingara",
+          "regionCode": "KD",
+          "communes": [
+            {
+              "code": "KD3C1",
+              "name": "Vélingara",
+              "description": "Commune de Vélingara",
+              "departementCode": "KD3"
+            },
+            {
+              "code": "KD3C2",
+              "name": "Kounkané",
+              "description": "Commune de Kounkané",
+              "departementCode": "KD3"
+            },
+            {
+              "code": "KD3C3",
+              "name": "Diaobé-Kabendou",
+              "description": "Commune de Diaobé-Kabendou",
+              "departementCode": "KD3"
+            },
+            {
+              "code": "KD3C4",
+              "name": "Saré Coly Sallé",
+              "description": "Commune de Saré Coly Sallé",
+              "departementCode": "KD3"
+            },
+            {
+              "code": "KD3C5",
+              "name": "Kandiaye",
+              "description": "Commune de Kandiaye",
+              "departementCode": "KD3"
+            },
+            {
+              "code": "KD3C6",
+              "name": "Némataba",
+              "description": "Commune de Némataba",
+              "departementCode": "KD3"
+            },
+            {
+              "code": "KD3C7",
+              "name": "Pakour",
+              "description": "Commune de Pakour",
+              "departementCode": "KD3"
+            },
+            {
+              "code": "KD3C8",
+              "name": "Paroumba",
+              "description": "Commune de Paroumba",
+              "departementCode": "KD3"
+            },
+            {
+              "code": "KD3C9",
+              "name": "Sinthiang Koundara",
+              "description": "Commune de Sinthiang Koundara",
+              "departementCode": "KD3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "KE",
+      "name": "Kédougou",
+      "description": "Région de Kédougou",
+      "departements": [
+        {
+          "code": "KE1",
+          "name": "Kédougou",
+          "description": "Département de Kédougou",
+          "regionCode": "KE",
+          "communes": [
+            {
+              "code": "KE1C1",
+              "name": "Kédougou",
+              "description": "Commune de Kédougou",
+              "departementCode": "KE1"
+            },
+            {
+              "code": "KE1C2",
+              "name": "Ninéfécha",
+              "description": "Commune de Ninéfécha",
+              "departementCode": "KE1"
+            },
+            {
+              "code": "KE1C3",
+              "name": "Bandafassi",
+              "description": "Commune de Bandafassi",
+              "departementCode": "KE1"
+            },
+            {
+              "code": "KE1C4",
+              "name": "Tomboronkoto",
+              "description": "Commune de Tomboronkoto",
+              "departementCode": "KE1"
+            },
+            {
+              "code": "KE1C5",
+              "name": "Dindefelo",
+              "description": "Commune de Dindefelo",
+              "departementCode": "KE1"
+            },
+            {
+              "code": "KE1C6",
+              "name": "Fongolimbi",
+              "description": "Commune de Fongolimbi",
+              "departementCode": "KE1"
+            }
+          ]
+        },
+        {
+          "code": "KE2",
+          "name": "Saraya",
+          "description": "Département de Saraya",
+          "regionCode": "KE",
+          "communes": [
+            {
+              "code": "KE2C1",
+              "name": "Saraya",
+              "description": "Commune de Saraya",
+              "departementCode": "KE2"
+            },
+            {
+              "code": "KE2C2",
+              "name": "Bembou",
+              "description": "Commune de Bembou",
+              "departementCode": "KE2"
+            },
+            {
+              "code": "KE2C3",
+              "name": "Médina Baffé",
+              "description": "Commune de Médina Baffé",
+              "departementCode": "KE2"
+            },
+            {
+              "code": "KE2C4",
+              "name": "Sabodala",
+              "description": "Commune de Sabodala",
+              "departementCode": "KE2"
+            },
+            {
+              "code": "KE2C5",
+              "name": "Khossanto",
+              "description": "Commune de Khossanto",
+              "departementCode": "KE2"
+            },
+            {
+              "code": "KE2C6",
+              "name": "Missirah Sirimana",
+              "description": "Commune de Missirah Sirimana",
+              "departementCode": "KE2"
+            }
+          ]
+        },
+        {
+          "code": "KE3",
+          "name": "Salémata",
+          "description": "Département de Salémata",
+          "regionCode": "KE",
+          "communes": [
+            {
+              "code": "KE3C1",
+              "name": "Salémata",
+              "description": "Commune de Salémata",
+              "departementCode": "KE3"
+            },
+            {
+              "code": "KE3C2",
+              "name": "Kévoye",
+              "description": "Commune de Kévoye",
+              "departementCode": "KE3"
+            },
+            {
+              "code": "KE3C3",
+              "name": "Dakateli",
+              "description": "Commune de Dakateli",
+              "departementCode": "KE3"
+            },
+            {
+              "code": "KE3C4",
+              "name": "Ethiolo",
+              "description": "Commune de Ethiolo",
+              "departementCode": "KE3"
+            },
+            {
+              "code": "KE3C5",
+              "name": "Oubadji",
+              "description": "Commune de Oubadji",
+              "departementCode": "KE3"
+            },
+            {
+              "code": "KE3C6",
+              "name": "Dar Salam",
+              "description": "Commune de Dar Salam",
+              "departementCode": "KE3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "FK",
+      "name": "Fatick",
+      "description": "Région de Fatick",
+      "departements": [
+        {
+          "code": "FK1",
+          "name": "Fatick",
+          "description": "Département de Fatick",
+          "regionCode": "FK",
+          "communes": [
+            {
+              "code": "FK1C1",
+              "name": "Fatick",
+              "description": "Commune de Fatick",
+              "departementCode": "FK1"
+            },
+            {
+              "code": "FK1C2",
+              "name": "Dioffior",
+              "description": "Commune de Dioffior",
+              "departementCode": "FK1"
+            },
+            {
+              "code": "FK1C3",
+              "name": "Diakhao",
+              "description": "Commune de Diakhao",
+              "departementCode": "FK1"
+            },
+            {
+              "code": "FK1C4",
+              "name": "Thiare Ndialgui",
+              "description": "Commune de Thiare Ndialgui",
+              "departementCode": "FK1"
+            },
+            {
+              "code": "FK1C5",
+              "name": "Tattaguine",
+              "description": "Commune de Tattaguine",
+              "departementCode": "FK1"
+            },
+            {
+              "code": "FK1C6",
+              "name": "Niakhar",
+              "description": "Commune de Niakhar",
+              "departementCode": "FK1"
+            },
+            {
+              "code": "FK1C7",
+              "name": "Mbellacadiao",
+              "description": "Commune de Mbellacadiao",
+              "departementCode": "FK1"
+            },
+            {
+              "code": "FK1C8",
+              "name": "Ndiob",
+              "description": "Commune de Ndiob",
+              "departementCode": "FK1"
+            }
+          ]
+        },
+        {
+          "code": "FK2",
+          "name": "Foundiougne",
+          "description": "Département de Foundiougne",
+          "regionCode": "FK",
+          "communes": [
+            {
+              "code": "FK2C1",
+              "name": "Foundiougne",
+              "description": "Commune de Foundiougne",
+              "departementCode": "FK2"
+            },
+            {
+              "code": "FK2C2",
+              "name": "Sokone",
+              "description": "Commune de Sokone",
+              "departementCode": "FK2"
+            },
+            {
+              "code": "FK2C3",
+              "name": "Karang Poste",
+              "description": "Commune de Karang Poste",
+              "departementCode": "FK2"
+            },
+            {
+              "code": "FK2C4",
+              "name": "Passy",
+              "description": "Commune de Passy",
+              "departementCode": "FK2"
+            },
+            {
+              "code": "FK2C5",
+              "name": "Soum",
+              "description": "Commune de Soum",
+              "departementCode": "FK2"
+            },
+            {
+              "code": "FK2C6",
+              "name": "Diossong",
+              "description": "Commune de Diossong",
+              "departementCode": "FK2"
+            },
+            {
+              "code": "FK2C7",
+              "name": "Djilor",
+              "description": "Commune de Djilor",
+              "departementCode": "FK2"
+            },
+            {
+              "code": "FK2C8",
+              "name": "Nioro Alassane Tall",
+              "description": "Commune de Nioro Alassane Tall",
+              "departementCode": "FK2"
+            },
+            {
+              "code": "FK2C9",
+              "name": "Diagane Barka",
+              "description": "Commune de Diagane Barka",
+              "departementCode": "FK2"
+            },
+            {
+              "code": "FK2C10",
+              "name": "Keur Saloum Diané",
+              "description": "Commune de Keur Saloum Diané",
+              "departementCode": "FK2"
+            }
+          ]
+        },
+        {
+          "code": "FK3",
+          "name": "Gossas",
+          "description": "Département de Gossas",
+          "regionCode": "FK",
+          "communes": [
+            {
+              "code": "FK3C1",
+              "name": "Gossas",
+              "description": "Commune de Gossas",
+              "departementCode": "FK3"
+            },
+            {
+              "code": "FK3C2",
+              "name": "Colobane",
+              "description": "Commune de Colobane",
+              "departementCode": "FK3"
+            },
+            {
+              "code": "FK3C3",
+              "name": "Mbar",
+              "description": "Commune de Mbar",
+              "departementCode": "FK3"
+            },
+            {
+              "code": "FK3C4",
+              "name": "Ndiene Lagane",
+              "description": "Commune de Ndiene Lagane",
+              "departementCode": "FK3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "SL",
+      "name": "Saint-Louis",
+      "description": "Région de Saint-Louis",
+      "departements": [
+        {
+          "code": "SL1",
+          "name": "Saint-Louis",
+          "description": "Département de Saint-Louis",
+          "regionCode": "SL",
+          "communes": [
+            {
+              "code": "SL1C1",
+              "name": "Saint-Louis",
+              "description": "Commune de Saint-Louis",
+              "departementCode": "SL1"
+            },
+            {
+              "code": "SL1C2",
+              "name": "Mpal",
+              "description": "Commune de Mpal",
+              "departementCode": "SL1"
+            },
+            {
+              "code": "SL1C3",
+              "name": "Fass Ngom",
+              "description": "Commune de Fass Ngom",
+              "departementCode": "SL1"
+            },
+            {
+              "code": "SL1C4",
+              "name": "Ndiébène Gandiole",
+              "description": "Commune de Ndiébène Gandiole",
+              "departementCode": "SL1"
+            },
+            {
+              "code": "SL1C5",
+              "name": "Gandon",
+              "description": "Commune de Gandon",
+              "departementCode": "SL1"
+            }
+          ]
+        },
+        {
+          "code": "SL2",
+          "name": "Dagana",
+          "description": "Département de Dagana",
+          "regionCode": "SL",
+          "communes": [
+            {
+              "code": "SL2C1",
+              "name": "Dagana",
+              "description": "Commune de Dagana",
+              "departementCode": "SL2"
+            },
+            {
+              "code": "SL2C2",
+              "name": "Richard Toll",
+              "description": "Commune de Richard Toll",
+              "departementCode": "SL2"
+            },
+            {
+              "code": "SL2C3",
+              "name": "Ross Béthio",
+              "description": "Commune de Ross Béthio",
+              "departementCode": "SL2"
+            },
+            {
+              "code": "SL2C4",
+              "name": "Rosso Sénégal",
+              "description": "Commune de Rosso Sénégal",
+              "departementCode": "SL2"
+            },
+            {
+              "code": "SL2C5",
+              "name": "Gaé",
+              "description": "Commune de Gaé",
+              "departementCode": "SL2"
+            },
+            {
+              "code": "SL2C6",
+              "name": "Ngnith",
+              "description": "Commune de Ngnith",
+              "departementCode": "SL2"
+            },
+            {
+              "code": "SL2C7",
+              "name": "Diama",
+              "description": "Commune de Diama",
+              "departementCode": "SL2"
+            },
+            {
+              "code": "SL2C8",
+              "name": "Ronkh",
+              "description": "Commune de Ronkh",
+              "departementCode": "SL2"
+            }
+          ]
+        },
+        {
+          "code": "SL3",
+          "name": "Podor",
+          "description": "Département de Podor",
+          "regionCode": "SL",
+          "communes": [
+            {
+              "code": "SL3C1",
+              "name": "Podor",
+              "description": "Commune de Podor",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C2",
+              "name": "Ndioum",
+              "description": "Commune de Ndioum",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C3",
+              "name": "Niandane",
+              "description": "Commune de Niandane",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C4",
+              "name": "Guédé Chantier",
+              "description": "Commune de Guédé Chantier",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C5",
+              "name": "Démette",
+              "description": "Commune de Démette",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C6",
+              "name": "Galoya Toucouleur",
+              "description": "Commune de Galoya Toucouleur",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C7",
+              "name": "Aéré Lao",
+              "description": "Commune de Aéré Lao",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C8",
+              "name": "Mboumba",
+              "description": "Commune de Mboumba",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C9",
+              "name": "Walaldé",
+              "description": "Commune de Walaldé",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C10",
+              "name": "Méri",
+              "description": "Commune de Méri",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C11",
+              "name": "Doumga Lao",
+              "description": "Commune de Doumga Lao",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C12",
+              "name": "Madina Ndiathbé",
+              "description": "Commune de Madina Ndiathbé",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C13",
+              "name": "Golléré",
+              "description": "Commune de Golléré",
+              "departementCode": "SL3"
+            },
+            {
+              "code": "SL3C14",
+              "name": "Ndiandane",
+              "description": "Commune de Ndiandane",
+              "departementCode": "SL3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "TC",
+      "name": "Tambacounda",
+      "description": "Région de Tambacounda",
+      "departements": [
+        {
+          "code": "TC1",
+          "name": "Tambacounda",
+          "description": "Département de Tambacounda",
+          "regionCode": "TC",
+          "communes": [
+            {
+              "code": "TC1C1",
+              "name": "Tambacounda",
+              "description": "Commune de Tambacounda",
+              "departementCode": "TC1"
+            },
+            {
+              "code": "TC1C2",
+              "name": "Niani Toucouleur",
+              "description": "Commune de Niani Toucouleur",
+              "departementCode": "TC1"
+            },
+            {
+              "code": "TC1C3",
+              "name": "Makacolibantang",
+              "description": "Commune de Makacolibantang",
+              "departementCode": "TC1"
+            }
+          ]
+        },
+        {
+          "code": "TC2",
+          "name": "Bakel",
+          "description": "Département de Bakel",
+          "regionCode": "TC",
+          "communes": [
+            {
+              "code": "TC2C1",
+              "name": "Bakel",
+              "description": "Commune de Bakel",
+              "departementCode": "TC2"
+            },
+            {
+              "code": "TC2C2",
+              "name": "Diawara",
+              "description": "Commune de Diawara",
+              "departementCode": "TC2"
+            },
+            {
+              "code": "TC2C3",
+              "name": "Kidira",
+              "description": "Commune de Kidira",
+              "departementCode": "TC2"
+            }
+          ]
+        },
+        {
+          "code": "TC3",
+          "name": "Goudiry",
+          "description": "Département de Goudiry",
+          "regionCode": "TC",
+          "communes": [
+            {
+              "code": "TC3C1",
+              "name": "Goudiry",
+              "description": "Commune de Goudiry",
+              "departementCode": "TC3"
+            },
+            {
+              "code": "TC3C2",
+              "name": "Kothiary",
+              "description": "Commune de Kothiary",
+              "departementCode": "TC3"
+            }
+          ]
+        },
+        {
+          "code": "TC4",
+          "name": "Koumpentoum",
+          "description": "Département de Koumpentoum",
+          "regionCode": "TC",
+          "communes": [
+            {
+              "code": "TC4C1",
+              "name": "Koumpentoum",
+              "description": "Commune de Koumpentoum",
+              "departementCode": "TC4"
+            },
+            {
+              "code": "TC4C2",
+              "name": "Malem Niani",
+              "description": "Commune de Malem Niani",
+              "departementCode": "TC4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "MT",
+      "name": "Matam",
+      "description": "Région de Matam",
+      "departements": [
+        {
+          "code": "MT1",
+          "name": "Matam",
+          "description": "Département de Matam",
+          "regionCode": "MT",
+          "communes": [
+            {
+              "code": "MT1C1",
+              "name": "Matam",
+              "description": "Commune de Matam",
+              "departementCode": "MT1"
+            },
+            {
+              "code": "MT1C2",
+              "name": "Ourossogui",
+              "description": "Commune de Ourossogui",
+              "departementCode": "MT1"
+            },
+            {
+              "code": "MT1C3",
+              "name": "Thilogne",
+              "description": "Commune de Thilogne",
+              "departementCode": "MT1"
+            },
+            {
+              "code": "MT1C4",
+              "name": "Nguidjilone",
+              "description": "Commune de Nguidjilone",
+              "departementCode": "MT1"
+            }
+          ]
+        },
+        {
+          "code": "MT2",
+          "name": "Kanel",
+          "description": "Département de Kanel",
+          "regionCode": "MT",
+          "communes": [
+            {
+              "code": "MT2C1",
+              "name": "Kanel",
+              "description": "Commune de Kanel",
+              "departementCode": "MT2"
+            },
+            {
+              "code": "MT2C2",
+              "name": "Semme",
+              "description": "Commune de Semme",
+              "departementCode": "MT2"
+            },
+            {
+              "code": "MT2C3",
+              "name": "Dembancane",
+              "description": "Commune de Dembancane",
+              "departementCode": "MT2"
+            },
+            {
+              "code": "MT2C4",
+              "name": "Hamady Ounare",
+              "description": "Commune de Hamady Ounare",
+              "departementCode": "MT2"
+            },
+            {
+              "code": "MT2C5",
+              "name": "Sinthiou Bamambé",
+              "description": "Commune de Sinthiou Bamambé",
+              "departementCode": "MT2"
+            },
+            {
+              "code": "MT2C6",
+              "name": "Ogo",
+              "description": "Commune de Ogo",
+              "departementCode": "MT2"
+            }
+          ]
+        },
+        {
+          "code": "MT3",
+          "name": "Ranérou Ferlo",
+          "description": "Département de Ranérou Ferlo",
+          "regionCode": "MT",
+          "communes": [
+            {
+              "code": "MT3C1",
+              "name": "Ranérou",
+              "description": "Commune de Ranérou",
+              "departementCode": "MT3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ZG",
+      "name": "Ziguinchor",
+      "description": "Région de Ziguinchor",
+      "departements": [
+        {
+          "code": "ZG1",
+          "name": "Ziguinchor",
+          "description": "Département de Ziguinchor",
+          "regionCode": "ZG",
+          "communes": [
+            {
+              "code": "ZG1C1",
+              "name": "Ziguinchor",
+              "description": "Commune de Ziguinchor",
+              "departementCode": "ZG1"
+            },
+            {
+              "code": "ZG1C2",
+              "name": "Niaguis",
+              "description": "Commune de Niaguis",
+              "departementCode": "ZG1"
+            },
+            {
+              "code": "ZG1C3",
+              "name": "Adéane",
+              "description": "Commune de Adéane",
+              "departementCode": "ZG1"
+            }
+          ]
+        },
+        {
+          "code": "ZG2",
+          "name": "Bignona",
+          "description": "Département de Bignona",
+          "regionCode": "ZG",
+          "communes": [
+            {
+              "code": "ZG2C1",
+              "name": "Bignona",
+              "description": "Commune de Bignona",
+              "departementCode": "ZG2"
+            },
+            {
+              "code": "ZG2C2",
+              "name": "Thionck Essyl",
+              "description": "Commune de Thionck Essyl",
+              "departementCode": "ZG2"
+            },
+            {
+              "code": "ZG2C3",
+              "name": "Diouloulou",
+              "description": "Commune de Diouloulou",
+              "departementCode": "ZG2"
+            }
+          ]
+        },
+        {
+          "code": "ZG3",
+          "name": "Oussouye",
+          "description": "Département de Oussouye",
+          "regionCode": "ZG",
+          "communes": [
+            {
+              "code": "ZG3C1",
+              "name": "Oussouye",
+              "description": "Commune de Oussouye",
+              "departementCode": "ZG3"
+            },
+            {
+              "code": "ZG3C2",
+              "name": "Diembéring",
+              "description": "Commune de Diembéring",
+              "departementCode": "ZG3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "LG",
+      "name": "Louga",
+      "description": "Région de Louga",
+      "departements": [
+        {
+          "code": "LG1",
+          "name": "Louga",
+          "description": "Département de Louga",
+          "regionCode": "LG",
+          "communes": [
+            {
+              "code": "LG1C1",
+              "name": "Louga",
+              "description": "Commune de Louga",
+              "departementCode": "LG1"
+            },
+            {
+              "code": "LG1C2",
+              "name": "Ndiagne",
+              "description": "Commune de Ndiagne",
+              "departementCode": "LG1"
+            }
+          ]
+        },
+        {
+          "code": "LG2",
+          "name": "Kébémer",
+          "description": "Département de Kébémer",
+          "regionCode": "LG",
+          "communes": [
+            {
+              "code": "LG2C1",
+              "name": "Kébémer",
+              "description": "Commune de Kébémer",
+              "departementCode": "LG2"
+            },
+            {
+              "code": "LG2C2",
+              "name": "Guéoul",
+              "description": "Commune de Guéoul",
+              "departementCode": "LG2"
+            }
+          ]
+        },
+        {
+          "code": "LG3",
+          "name": "Linguère",
+          "description": "Département de Linguère",
+          "regionCode": "LG",
+          "communes": [
+            {
+              "code": "LG3C1",
+              "name": "Linguère",
+              "description": "Commune de Linguère",
+              "departementCode": "LG3"
+            },
+            {
+              "code": "LG3C2",
+              "name": "Dahra",
+              "description": "Commune de Dahra",
+              "departementCode": "LG3"
+            },
+            {
+              "code": "LG3C3",
+              "name": "Mbeuleukhé",
+              "description": "Commune de Mbeuleukhé",
+              "departementCode": "LG3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "SD",
+      "name": "Sédhiou",
+      "description": "Région de Sédhiou",
+      "departements": [
+        {
+          "code": "SD1",
+          "name": "Sédhiou",
+          "description": "Département de Sédhiou",
+          "regionCode": "SD",
+          "communes": [
+            {
+              "code": "SD1C1",
+              "name": "Sédhiou",
+              "description": "Commune de Sédhiou",
+              "departementCode": "SD1"
+            },
+            {
+              "code": "SD1C2",
+              "name": "Diannah Malary",
+              "description": "Commune de Diannah Malary",
+              "departementCode": "SD1"
+            },
+            {
+              "code": "SD1C3",
+              "name": "Marsassoum",
+              "description": "Commune de Marsassoum",
+              "departementCode": "SD1"
+            }
+          ]
+        },
+        {
+          "code": "SD2",
+          "name": "Bounkiling",
+          "description": "Département de Bounkiling",
+          "regionCode": "SD",
+          "communes": [
+            {
+              "code": "SD2C1",
+              "name": "Bounkiling",
+              "description": "Commune de Bounkiling",
+              "departementCode": "SD2"
+            },
+            {
+              "code": "SD2C2",
+              "name": "Madina Wandifa",
+              "description": "Commune de Madina Wandifa",
+              "departementCode": "SD2"
+            },
+            {
+              "code": "SD2C3",
+              "name": "Ndiamacouta",
+              "description": "Commune de Ndiamacouta",
+              "departementCode": "SD2"
+            }
+          ]
+        },
+        {
+          "code": "SD3",
+          "name": "Goudomp",
+          "description": "Département de Goudomp",
+          "regionCode": "SD",
+          "communes": [
+            {
+              "code": "SD3C1",
+              "name": "Goudomp",
+              "description": "Commune de Goudomp",
+              "departementCode": "SD3"
+            },
+            {
+              "code": "SD3C2",
+              "name": "Samine",
+              "description": "Commune de Samine",
+              "departementCode": "SD3"
+            },
+            {
+              "code": "SD3C3",
+              "name": "Tanaff",
+              "description": "Commune de Tanaff",
+              "departementCode": "SD3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

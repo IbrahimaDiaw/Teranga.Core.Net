@@ -3,19 +3,32 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>Teranga.Core</PackageId>
+    <LangVersion>latest</LangVersion>
     <Version>1.0.0</Version>
     <Authors>Ibrahima DIAW</Authors>
-    <Company>YourCompany</Company>
+    <Company>DiwaneIT</Company>
+    <Product>Teranga.Core</Product>
     <Description>Core library for managing Senegal's administrative data and more</Description>
-    <PackageTags>senegal;administrative;regions;departments;communes</PackageTags>
+    <Copyright>Copyright © $([System.DateTime]::Now.Year)</Copyright>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    
+    <PackageTags>senegal;administrative;regions;departments;communes;data</PackageTags>
+    <PackageReleaseNotes>Version initiale</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/IbrahimaDiaw/Teranga.Core.Net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/IbrahimaDiaw/Teranga.Core.Net</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Data\teranga-data.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

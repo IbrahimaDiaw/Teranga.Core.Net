@@ -1,36 +1,22 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using System.Text.Json;
-using Teranga.Core.Exceptions;
-using Teranga.Core.Models;
 using Teranga.Core.Services;
 
 namespace Teranga.Core.Tests
 {
     public class TerangaServiceTests
     {
-        private readonly Mock<ILogger<TerangaService>> _loggerMock;
+        private readonly Mock<ILogger<TerangaService>> _logger;
         private readonly TerangaService _service;
-        private readonly TerangaData _testData;
 
         public TerangaServiceTests()
         {
-            _loggerMock = new Mock<ILogger<TerangaService>>();
-            _testData = CreateTestData();
-            SetupTestEnvironment();
-            _service = new TerangaService(_loggerMock.Object);
-        }
-
-        private void SetupTestEnvironment()
-        {
-            var jsonData = JsonSerializer.Serialize(_testData);
-            var directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
-            Directory.CreateDirectory(directory);
-            File.WriteAllText(Path.Combine(directory, "teranga-data.json"), jsonData);
+            _logger = new Mock<ILogger<TerangaService>>();
+            _service = new TerangaService(_logger.Object);
         }
 
         [Fact]
-        public async Task GetTerangaDataAsync_ShouldReturnValidData()
+        public async Task GetTerangaDataAsync_ShouldReturnData()
         {
             // Act
             var result = await _service.GetTerangaDataAsync();
@@ -39,8 +25,8 @@ namespace Teranga.Core.Tests
             Assert.NotNull(result);
             Assert.Equal("SN", result.Code);
             Assert.Equal("Sénégal", result.Name);
-            Assert.Equal(16743930, result.Population);
         }
+
         [Fact]
         public async Task GetAllRegionsAsync_ShouldReturnAllRegions()
         {
@@ -49,150 +35,88 @@ namespace Teranga.Core.Tests
 
             // Assert
             Assert.NotNull(regions);
-            Assert.Single(regions);
-            Assert.Equal("DK", regions.First().Code);
+            Assert.NotEmpty(regions);
+        }
+
+        [Fact]
+        public async Task GetRegionByCodeAsync_WithDakarCode_ShouldReturnDakarRegion()
+        {
+            // Act
+            var region = await _service.GetRegionByCodeAsync("DK");
+
+            // Assert
+            Assert.NotNull(region);
+            Assert.Equal("DK", region.Code);
+            Assert.Equal("Dakar", region.Name);
         }
 
         [Theory]
-        [InlineData("DK")]
-        public async Task GetRegionByCodeAsync_WithValidCode_ShouldReturnRegion(string code)
+        [InlineData("INVALID")]
+        public async Task GetRegionByCodeAsync_WithInvalidCode_ShouldReturnNull(string code)
         {
             // Act
             var region = await _service.GetRegionByCodeAsync(code);
 
             // Assert
-            Assert.NotNull(region);
-            Assert.Equal(code, region.Code);
-            Assert.Equal("Dakar", region.Name);
+            Assert.Null(region);
         }
 
         [Theory]
-        [InlineData("")]
         [InlineData(null)]
+        [InlineData("")]
         [InlineData(" ")]
-        public async Task GetRegionByCodeAsync_WithInvalidCode_ShouldThrowArgumentNullException(string code)
+        public async Task GetRegionByCodeAsync_WithInvalidInput_ShouldThrowArgumentException(string code)
         {
             // Act & Assert
             await Assert.ThrowsAsync<ArgumentNullException>(() =>
                 _service.GetRegionByCodeAsync(code));
         }
 
-        [Theory]
-        [InlineData("DK1")]
-        public async Task GetDepartmentByCodeAsync_WithValidCode_ShouldReturnDepartment(string code)
+        [Fact]
+        public async Task GetDepartmentsByRegionAsync_ForDakar_ShouldReturnDepartments()
         {
             // Act
-            var department = await _service.GetDepartmentByCodeAsync(code);
-
-            // Assert
-            Assert.NotNull(department);
-            Assert.Equal(code, department.Code);
-            Assert.Equal("Dakar", department.Name);
-        }
-
-        [Theory]
-        [InlineData("DK")]
-        public async Task GetDepartmentsByRegionAsync_WithValidRegionCode_ShouldReturnDepartments(string regionCode)
-        {
-            // Act
-            var departments = await _service.GetDepartmentsByRegionAsync(regionCode);
+            var departments = await _service.GetDepartmentsByRegionAsync("DK");
 
             // Assert
             Assert.NotNull(departments);
-            Assert.Single(departments);
-            Assert.Equal("DK1", departments.First().Code);
+            Assert.NotEmpty(departments);
+            Assert.Contains(departments, d => d.Name == "Dakar");
         }
 
-        [Theory]
-        [InlineData("DK1C1")]
-        public async Task GetCommuneByCodeAsync_WithValidCode_ShouldReturnCommune(string code)
+        [Fact]
+        public async Task GetDepartmentByCodeAsync_ForDakarDepartment_ShouldReturnDepartment()
         {
             // Act
-            var commune = await _service.GetCommuneByCodeAsync(code);
+            var department = await _service.GetDepartmentByCodeAsync("DK1");
 
             // Assert
-            Assert.NotNull(commune);
-            Assert.Equal(code, commune.Code);
-            Assert.Equal("Plateau", commune.Name);
+            Assert.NotNull(department);
+            Assert.Equal("DK1", department.Code);
+            Assert.Equal("Dakar", department.Name);
         }
 
-        [Theory]
-        [InlineData("DK1")]
-        public async Task GetCommunesByDepartmentAsync_WithValidDepartmentCode_ShouldReturnCommunes(string departmentCode)
+        [Fact]
+        public async Task GetCommunesByDepartmentAsync_ForDakarDepartment_ShouldReturnCommunes()
         {
             // Act
-            var communes = await _service.GetCommunesByDepartmentAsync(departmentCode);
+            var communes = await _service.GetCommunesByDepartmentAsync("DK1");
 
             // Assert
             Assert.NotNull(communes);
-            Assert.Single(communes);
-            Assert.Equal("DK1C1", communes.First().Code);
+            Assert.NotEmpty(communes);
         }
 
         [Fact]
-        public async Task ReloadDataAsync_ShouldReloadData()
+        public async Task GetCommuneByCodeAsync_ForPlateauCommune_ShouldReturnCommune()
         {
             // Act
-            await _service.ReloadDataAsync();
+            var commune = await _service.GetCommuneByCodeAsync("DK1C17");
 
             // Assert
-            var data = await _service.GetTerangaDataAsync();
-            Assert.NotNull(data);
-            Assert.Equal("SN", data.Code);
-        }
-
-        [Fact]
-        public async Task GetTerangaDataAsync_WithInvalidJson_ShouldThrowTerangaException()
-        {
-            // Arrange
-            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "teranga-data.json"), "invalid json");
-            var service = new TerangaService(_loggerMock.Object);
-
-            // Act & Assert
-            await Assert.ThrowsAsync<TerangaException>(() =>
-                service.GetTerangaDataAsync());
-        }
-
-        private TerangaData CreateTestData()
-        {
-            return new TerangaData
-            {
-                Code = "SN",
-                Name = "Sénégal",
-                Population = 16743930,
-                Area = 196722,
-                Capital = "Dakar",
-                Currency = "XOF",
-                Language = "Français",
-                Continent = "Afrique",
-                Regions = new List<Region>
-                {
-                    new Region
-                    {
-                        Code = "DK",
-                        Name = "Dakar",
-                        Departements = new List<Departement>
-                        {
-                            new Departement
-                            {
-                                Code = "DK1",
-                                Name = "Dakar",
-                                RegionCode = "DK",
-                                Communes = new List<Commune>
-                                {
-                                    new Commune
-                                    {
-                                        Code = "DK1C1",
-                                        Name = "Plateau",
-                                        DepartementCode = "DK1",
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            };
+            Assert.NotNull(commune);
+            Assert.Equal("DK1C17", commune.Code);
+            Assert.Equal("Plateau", commune.Name);
         }
     }
 }

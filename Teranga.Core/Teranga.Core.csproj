@@ -14,9 +14,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Data\teranga-data.json">
+    <EmbeddedResource Include="Data\teranga-data.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="$(AssemblyName).Tests" />

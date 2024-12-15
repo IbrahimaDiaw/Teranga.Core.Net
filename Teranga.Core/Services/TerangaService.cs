@@ -104,7 +104,7 @@ namespace Teranga.Core.Services
                 _logger.LogInformation("Retrieving departments for region: {RegionCode}", regionCode);
                 var region = _terangaData?.Regions
                     .FirstOrDefault(r => r.Code.Equals(regionCode, StringComparison.OrdinalIgnoreCase));
-                return region?.Departments ?? Enumerable.Empty<Departement>();
+                return region?.Departements ?? Enumerable.Empty<Departement>();
             }
             finally
             {
@@ -127,7 +127,7 @@ namespace Teranga.Core.Services
             {
                 _logger.LogInformation("Retrieving department with code: {Code}", code);
                 return _terangaData?.Regions
-                    .SelectMany(r => r.Departments)
+                    .SelectMany(r => r.Departements)
                     .FirstOrDefault(d => d.Code.Equals(code, StringComparison.OrdinalIgnoreCase));
             }
             finally
@@ -151,7 +151,7 @@ namespace Teranga.Core.Services
             {
                 _logger.LogInformation("Retrieving communes for department: {DepartmentCode}", departmentCode);
                 var department = _terangaData?.Regions
-                    .SelectMany(r => r.Departments)
+                    .SelectMany(r => r.Departements)
                     .FirstOrDefault(d => d.Code.Equals(departmentCode, StringComparison.OrdinalIgnoreCase));
                 return department?.Communes ?? Enumerable.Empty<Commune>();
             }
@@ -176,7 +176,7 @@ namespace Teranga.Core.Services
             {
                 _logger.LogInformation("Retrieving commune with code: {Code}", code);
                 return _terangaData?.Regions
-                    .SelectMany(r => r.Departments)
+                    .SelectMany(r => r.Departements)
                     .SelectMany(d => d.Communes)
                     .FirstOrDefault(c => c.Code.Equals(code, StringComparison.OrdinalIgnoreCase));
             }

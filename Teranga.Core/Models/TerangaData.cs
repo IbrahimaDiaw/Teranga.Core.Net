@@ -20,7 +20,7 @@
         /// <summary>
         /// The local language name of the country
         /// </summary>
-        public List<string> LocalLanguage { get; set; } = new();
+        public List<string> LocalLanguages { get; set; } = new();
         /// <summary>
         /// The capital of the country
         /// </summary>

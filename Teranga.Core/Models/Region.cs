@@ -9,6 +9,6 @@ namespace Teranga.Core.Models
         /// <summary>
         /// The departements of the region
         /// </summary>
-        public virtual ICollection<Departement> Departments { get; set; } = new List<Departement>();
+        public virtual ICollection<Departement> Departements { get; set; } = new List<Departement>();
     }
 }

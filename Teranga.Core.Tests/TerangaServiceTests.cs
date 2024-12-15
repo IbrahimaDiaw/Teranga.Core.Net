@@ -172,7 +172,7 @@ namespace Teranga.Core.Tests
                     {
                         Code = "DK",
                         Name = "Dakar",
-                        Departments = new List<Departement>
+                        Departements = new List<Departement>
                         {
                             new Departement
                             {

@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <PackageId>Teranga.Core</PackageId>
     <LangVersion>latest</LangVersion>
-    <Version>1.0.0</Version>
+    <Version>2.1.0</Version>
     <Authors>Ibrahima DIAW</Authors>
-    <Company>DiwaneIT</Company>
+    <Company>MederaTech</Company>
     <Product>Teranga.Core</Product>
     <Description>Core library for managing Senegal's administrative data and more</Description>
     <Copyright>Copyright © $([System.DateTime]::Now.Year)</Copyright>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    
+
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
-    
-    <PackageTags>senegal;administrative;regions;departments;communes;data</PackageTags>
-    <PackageReleaseNotes>Version initiale</PackageReleaseNotes>
+
+    <PackageTags>senegal;administrative;regions;departments;communes;data;ansd;statistics</PackageTags>
+    <PackageReleaseNotes>Version 2.1.0&#10;- Migration du package vers .NET 10&#10;- Ajout d'un module ANSD regional normalise sur 14 regions&#10;- Integration des donnees ANSD dans ITerangaService via une facade unique&#10;- Ajout de GetRegionProfileAsync, SearchRegionProfilesAsync et GetRegionProfilesAsync pagine&#10;- Ajout des statistiques administratives globales et detaillees par region&#10;- Ajout des recherches par nom insensibles a la casse et aux accents&#10;- Nettoyage, validation et durcissement concurrentiel du dataset embarque&#10;- Mise a jour du sample UI et de la documentation</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/IbrahimaDiaw/Teranga.Core.Net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/IbrahimaDiaw/Teranga.Core.Net</RepositoryUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -33,6 +33,9 @@
     <EmbeddedResource Include="Data\teranga-data.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Data\ansd-regional-profiles.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="$(AssemblyName).Tests" />
@@ -44,8 +47,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.5" />
   </ItemGroup>
   <ItemGroup>
     <None Update="logo.png">

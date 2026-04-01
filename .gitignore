@@ -482,3 +482,7 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Local .NET CLI state
+.dotnet/
+ui-build.log

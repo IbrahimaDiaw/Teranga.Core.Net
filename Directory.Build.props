@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Disable NuGet vulnerability audit for this repo because pack/restore may run in restricted environments. -->
+    <NuGetAudit>false</NuGetAudit>
+  </PropertyGroup>
+</Project>

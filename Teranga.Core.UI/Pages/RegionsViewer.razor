@@ -1,65 +1,177 @@
-﻿@page "/regions"
+@page "/regions"
 @using Teranga.Core.Models
 @using Teranga.Core.Services
 @inject ITerangaService TerangaService
 
-<h3>Régions du Sénégal</h3>
+<PageTitle>Régions</PageTitle>
+
+<div class="page-header fade-in">
+    <h1>Régions du Sénégal</h1>
+    <p class="page-subtitle">Le sample utilise maintenant les profils régionaux agrégés du service principal.</p>
+</div>
+
+<div class="row mb-4 fade-in fade-in-delay-1">
+    <div class="col-lg-8">
+        <input class="form-control"
+               placeholder="Rechercher une région par code ou nom..."
+               @bind="_searchTerm"
+               @bind:event="oninput"
+               @onkeydown="HandleKeyDown" />
+    </div>
+    <div class="col-lg-2 col-md-6 d-grid mt-2 mt-lg-0">
+        <button class="btn btn-primary" @onclick="ApplySearchAsync">Rechercher</button>
+    </div>
+    <div class="col-lg-2 col-md-6 d-grid mt-2 mt-lg-0">
+        <button class="btn btn-outline-secondary" @onclick="ResetSearchAsync" disabled="@(!_isSearchMode)">Réinitialiser</button>
+    </div>
+</div>
 
 @if (_loading)
 {
-    <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
+    <div class="teranga-loader">
+        <span></span><span></span><span></span>
     </div>
 }
-else if (_regions?.Any() != true)
+else if (_profiles.Count == 0)
 {
-    <div class="alert alert-info">Aucune région trouvée.</div>
+    <div class="alert alert-info fade-in">Aucun profil régional trouvé.</div>
 }
 else
 {
-    <div class="row">
-        <div class="col-md-4">
-            <div class="list-group">
-                @foreach (var region in _regions)
+    <div class="row g-4 fade-in fade-in-delay-2">
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <span>@_profiles.Count profil@(_profiles.Count > 1 ? "s" : "")</span>
+                    @if (!_isSearchMode && _pagedProfiles is not null)
+                    {
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Page @_pagedProfiles.Page / @_pagedProfiles.TotalPages</span>
+                    }
+                </div>
+                <div class="list-group list-group-flush">
+                    @foreach (var profile in _profiles)
+                    {
+                        <button class="list-group-item list-group-item-action @(_selectedProfile?.RegionCode == profile.RegionCode ? "active" : "")"
+                                @onclick="() => SelectProfileAsync(profile.RegionCode)">
+                            <div style="font-weight: 500;">@profile.RegionName</div>
+                            <div style="font-size: 0.75rem; opacity: 0.65;">@profile.RegionCode</div>
+                        </button>
+                    }
+                </div>
+                @if (!_isSearchMode && _pagedProfiles is not null)
                 {
-                    <button class="list-group-item list-group-item-action @(_selectedRegion?.Code == region.Code ? "active" : "")"
-                            @onclick="() => SelectRegion(region)">
-                        @region.Name
-                    </button>
+                    <div class="card-body border-top">
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-secondary flex-fill" @onclick="PreviousPageAsync" disabled="@(!_pagedProfiles.HasPreviousPage)">Précédent</button>
+                            <button class="btn btn-outline-secondary flex-fill" @onclick="NextPageAsync" disabled="@(!_pagedProfiles.HasNextPage)">Suivant</button>
+                        </div>
+                    </div>
                 }
             </div>
         </div>
-        <div class="col-md-8">
-            @if (_selectedRegion != null)
+        <div class="col-lg-8">
+            @if (_selectedProfile is null)
             {
                 <div class="card">
-                    <div class="card-header">
-                        <h4>@_selectedRegion.Name</h4>
+                    <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 240px; color: var(--text-muted);">
+                        <p class="mb-0">Sélectionnez une région pour voir son profil complet.</p>
                     </div>
+                </div>
+            }
+            else
+            {
+                <div class="card">
                     <div class="card-body">
-                        <p><strong>Code:</strong> @_selectedRegion.Code</p>
-                        <p><strong>Description:</strong> @_selectedRegion.Description</p>
+                        <div class="d-flex align-items-start justify-content-between mb-3 flex-wrap gap-2">
+                            <div>
+                                <h3 class="mb-1">@_selectedProfile.RegionName</h3>
+                                <span class="data-chip">@_selectedProfile.RegionCode</span>
+                            </div>
+                            @if (_selectedProfile.AnsdProfile is not null)
+                            {
+                                <span class="data-chip terracotta">@_selectedProfile.AnsdProfile.Indicators.Count indicateurs ANSD</span>
+                            }
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">@_selectedProfile.Region.Description</p>
 
-                        @if (_departments?.Any() == true)
-                        {
-                            <h5 class="mt-4">Départements:</h5>
-                            <div class="list-group">
-                                @foreach (var dept in _departments)
-                                {
-                                    <div class="list-group-item">
-                                        <h6>@dept.Name</h6>
-                                        @if (_communesByDepartment.ContainsKey(dept.Code))
-                                        {
-                                            <small>Communes:</small>
-                                            <ul class="list-unstyled ms-3">
-                                                @foreach (var commune in _communesByDepartment[dept.Code])
-                                                {
-                                                    <li>@commune.Name</li>
-                                                }
-                                            </ul>
-                                        }
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-4">
+                                <div class="card stat-card" style="border-top-width: 2px;">
+                                    <div class="card-body py-3">
+                                        <div class="stat-label">Départements</div>
+                                        <div class="stat-value small">@_selectedProfile.Statistics.DepartmentCount</div>
                                     </div>
-                                }
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card stat-card teal" style="border-top-width: 2px;">
+                                    <div class="card-body py-3">
+                                        <div class="stat-label">Communes</div>
+                                        <div class="stat-value small">@_selectedProfile.Statistics.CommuneCount</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card stat-card gold" style="border-top-width: 2px;">
+                                    <div class="card-body py-3">
+                                        <div class="stat-label">Population</div>
+                                        <div style="font-family: var(--font-display); font-size: 1.15rem;">@FormatIndicator("population_total")</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mb-3" style="color: var(--text-secondary); font-size: 0.875rem;">
+                            <strong style="color: var(--text-primary);">Moyenne :</strong>
+                            @_selectedProfile.Statistics.AverageCommunesPerDepartment.ToString("0.00") communes par département.
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Département</th>
+                                        <th>Code</th>
+                                        <th>Communes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var department in _selectedProfile.Departments.OrderBy(department => department.Name, StringComparer.OrdinalIgnoreCase))
+                                    {
+                                        <tr>
+                                            <td style="font-weight: 500;">@department.Name</td>
+                                            <td><span class="data-chip teal">@department.Code</span></td>
+                                            <td>@department.Communes.Count</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <hr class="section-divider" style="margin: var(--space-lg) 0;" />
+
+                        @{
+                            var visibleCommunes = _showAllCommunes
+                                ? _selectedProfile.Communes
+                                : _selectedProfile.Communes.Take(40);
+                        }
+
+                        <div class="d-flex flex-wrap gap-1">
+                            @foreach (var commune in visibleCommunes)
+                            {
+                                <span class="data-chip" style="font-size: 0.72rem;">@commune.Name</span>
+                            }
+                        </div>
+
+                        @if (_selectedProfile.Communes.Count > 40)
+                        {
+                            <div class="mt-3">
+                                <button class="btn btn-outline-secondary btn-sm"
+                                        @onclick="ToggleCommunesVisibility">
+                                    @(_showAllCommunes
+                                        ? "Réduire la liste"
+                                        : $"Voir toutes les communes ({_selectedProfile.Communes.Count - 40} de plus)")
+                                </button>
                             </div>
                         }
                     </div>
@@ -70,17 +182,45 @@ else
 }
 
 @code {
+    private const int PageSize = 5;
     private bool _loading = true;
-    private IEnumerable<Region>? _regions;
-    private Region? _selectedRegion;
-    private IEnumerable<Departement>? _departments;
-    private Dictionary<string, IEnumerable<Commune>> _communesByDepartment = new();
+    private bool _isSearchMode;
+    private bool _showAllCommunes;
+    private string _searchTerm = string.Empty;
+    private PagedResult<RegionProfile>? _pagedProfiles;
+    private IReadOnlyList<RegionProfile> _profiles = [];
+    private RegionProfile? _selectedProfile;
 
     protected override async Task OnInitializedAsync()
     {
+        await LoadPageAsync(1);
+    }
+
+    private async Task HandleKeyDown(Microsoft.AspNetCore.Components.Web.KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await ApplySearchAsync();
+        }
+    }
+
+    private async Task ApplySearchAsync()
+    {
+        _loading = true;
+
         try
         {
-            _regions = await TerangaService.GetAllRegionsAsync();
+            if (string.IsNullOrWhiteSpace(_searchTerm))
+            {
+                await ResetSearchAsync();
+                return;
+            }
+
+            _isSearchMode = true;
+            _pagedProfiles = null;
+            _profiles = await TerangaService.SearchRegionProfilesAsync(_searchTerm);
+            _selectedProfile = _profiles.FirstOrDefault();
+            _showAllCommunes = false;
         }
         finally
         {
@@ -88,19 +228,73 @@ else
         }
     }
 
-    private async Task SelectRegion(Region region)
+    private async Task ResetSearchAsync()
     {
-        _selectedRegion = region;
-        _departments = await TerangaService.GetDepartmentsByRegionAsync(region.Code);
+        _searchTerm = string.Empty;
+        _isSearchMode = false;
+        await LoadPageAsync(1);
+    }
 
-        _communesByDepartment.Clear();
-        if (_departments != null)
+    private async Task LoadPageAsync(int page)
+    {
+        _loading = true;
+
+        try
         {
-            foreach (var dept in _departments)
-            {
-                var communes = await TerangaService.GetCommunesByDepartmentAsync(dept.Code);
-                _communesByDepartment[dept.Code] = communes;
-            }
+            _pagedProfiles = await TerangaService.GetRegionProfilesAsync(page, PageSize);
+            _profiles = _pagedProfiles.Items;
+            _selectedProfile = _profiles.FirstOrDefault();
+            _showAllCommunes = false;
         }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private async Task PreviousPageAsync()
+    {
+        if (_pagedProfiles is not null && _pagedProfiles.HasPreviousPage)
+        {
+            await LoadPageAsync(_pagedProfiles.Page - 1);
+        }
+    }
+
+    private async Task NextPageAsync()
+    {
+        if (_pagedProfiles is not null && _pagedProfiles.HasNextPage)
+        {
+            await LoadPageAsync(_pagedProfiles.Page + 1);
+        }
+    }
+
+    private async Task SelectProfileAsync(string regionCode)
+    {
+        _selectedProfile = await TerangaService.GetRegionProfileAsync(regionCode);
+        _showAllCommunes = false;
+    }
+
+    private void ToggleCommunesVisibility()
+    {
+        _showAllCommunes = !_showAllCommunes;
+    }
+
+    private string FormatIndicator(string indicatorCode)
+    {
+        var indicator = _selectedProfile?.AnsdProfile?.Indicators.FirstOrDefault(
+            item => string.Equals(item.IndicatorCode, indicatorCode, StringComparison.OrdinalIgnoreCase));
+
+        if (indicator is null)
+        {
+            return "n/a";
+        }
+
+        return indicator.Unit switch
+        {
+            "habitants" => indicator.Value.ToString("N0"),
+            "km2" => indicator.Value.ToString("N0"),
+            "%" => indicator.Value.ToString("0.0"),
+            _ => indicator.Value.ToString("0.##")
+        };
     }
 }

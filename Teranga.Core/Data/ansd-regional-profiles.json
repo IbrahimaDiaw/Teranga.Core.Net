@@ -1,0 +1,232 @@
+{
+  "metadata": {
+    "datasetName": "Teranga.Core ANSD Regional Profiles",
+    "sourceOrganization": "Agence Nationale de la Statistique et de la Démographie (ANSD)",
+    "sourceCatalogUrl": "https://www.ansd.sn/taxonomy/term/12?page=1",
+    "coverageLevel": "Region",
+    "normalizedOn": "2026-04-01",
+    "notes": "Normalized from ANSD regional profile pages. Region codes are aligned with the Teranga.Core administrative dataset."
+  },
+  "indicatorDefinitions": [
+    { "indicatorCode": "area_km2", "indicatorName": "Superficie en Km2", "unit": "km2", "description": "Surface administrative de la region." },
+    { "indicatorCode": "population_total", "indicatorName": "Population", "unit": "habitants", "description": "Population totale de la region." },
+    { "indicatorCode": "population_male", "indicatorName": "Population Masculine", "unit": "habitants", "description": "Population masculine de la region." },
+    { "indicatorCode": "population_female", "indicatorName": "Population féminine", "unit": "habitants", "description": "Population féminine de la région." },
+    { "indicatorCode": "civil_registration_rate", "indicatorName": "Taux d'enregistrement des enfants à l'état civil (%)", "unit": "%", "description": "Taux d'enregistrement des enfants à l'état civil." },
+    { "indicatorCode": "gross_school_enrollment_rate", "indicatorName": "Taux brut de scolarisation globale (%)", "unit": "%", "description": "Taux brut de scolarisation globale." },
+    { "indicatorCode": "literacy_rate", "indicatorName": "Taux d'alphabétisation général (%)", "unit": "%", "description": "Taux d'alphabétisation général." },
+    { "indicatorCode": "poverty_incidence", "indicatorName": "Incidence pauvreté", "unit": "%", "description": "Incidence de la pauvreté." }
+  ],
+  "profiles": [
+    {
+      "regionCode": "DK",
+      "regionName": "Dakar",
+      "profilePageUrl": "https://www.ansd.sn/themes/situation-economiques-et-sociales/ses-regionales?field_year_value=All&field_regions_ses_target_id=5",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 547, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/themes/situation-economiques-et-sociales/ses-regionales?field_year_value=All&field_regions_ses_target_id=5" },
+        { "indicatorCode": "population_total", "value": 3896564, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/themes/situation-economiques-et-sociales/ses-regionales?field_year_value=All&field_regions_ses_target_id=5" },
+        { "indicatorCode": "population_male", "value": 1965101, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/themes/situation-economiques-et-sociales/ses-regionales?field_year_value=All&field_regions_ses_target_id=5" },
+        { "indicatorCode": "population_female", "value": 1931463, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/themes/situation-economiques-et-sociales/ses-regionales?field_year_value=All&field_regions_ses_target_id=5" },
+        { "indicatorCode": "civil_registration_rate", "value": 91.8, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/themes/situation-economiques-et-sociales/ses-regionales?field_year_value=All&field_regions_ses_target_id=5" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 64.3, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/themes/situation-economiques-et-sociales/ses-regionales?field_year_value=All&field_regions_ses_target_id=5" },
+        { "indicatorCode": "literacy_rate", "value": 72.3, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/themes/situation-economiques-et-sociales/ses-regionales?field_year_value=All&field_regions_ses_target_id=5" },
+        { "indicatorCode": "poverty_incidence", "value": 9.0, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/themes/situation-economiques-et-sociales/ses-regionales?field_year_value=All&field_regions_ses_target_id=5" }
+      ]
+    },
+    {
+      "regionCode": "TH",
+      "regionName": "Thiès",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/9",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 6670, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/9" },
+        { "indicatorCode": "population_total", "value": 2467523, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/9" },
+        { "indicatorCode": "population_male", "value": 1258870, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/9" },
+        { "indicatorCode": "population_female", "value": 1208652, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/9" },
+        { "indicatorCode": "civil_registration_rate", "value": 86.8, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/9" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 53.4, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/9" },
+        { "indicatorCode": "literacy_rate", "value": 53.6, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/9" },
+        { "indicatorCode": "poverty_incidence", "value": 34.1, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/9" }
+      ]
+    },
+    {
+      "regionCode": "DL",
+      "regionName": "Diourbel",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/6",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 4824, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/6" },
+        { "indicatorCode": "population_total", "value": 2080811, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/6" },
+        { "indicatorCode": "population_male", "value": 1029953, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/6" },
+        { "indicatorCode": "population_female", "value": 1050858, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/6" },
+        { "indicatorCode": "civil_registration_rate", "value": 69.4, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/6" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 28.9, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/6" },
+        { "indicatorCode": "literacy_rate", "value": 41.6, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/6" },
+        { "indicatorCode": "poverty_incidence", "value": 43.9, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/6" }
+      ]
+    },
+    {
+      "regionCode": "KL",
+      "regionName": "Kaolack",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/12",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 5357, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/12" },
+        { "indicatorCode": "population_total", "value": 1338671, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/12" },
+        { "indicatorCode": "population_male", "value": 675832, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/12" },
+        { "indicatorCode": "population_female", "value": 662839, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/12" },
+        { "indicatorCode": "civil_registration_rate", "value": 72.5, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/12" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 46.4, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/12" },
+        { "indicatorCode": "literacy_rate", "value": 43.1, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/12" },
+        { "indicatorCode": "poverty_incidence", "value": 41.5, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/12" }
+      ]
+    },
+    {
+      "regionCode": "KF",
+      "regionName": "Kaffrine",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/11",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 11262, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/11" },
+        { "indicatorCode": "population_total", "value": 821287, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/11" },
+        { "indicatorCode": "population_male", "value": 416297, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/11" },
+        { "indicatorCode": "population_female", "value": 404989, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/11" },
+        { "indicatorCode": "civil_registration_rate", "value": 64.1, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/11" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 26.7, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/11" },
+        { "indicatorCode": "literacy_rate", "value": 39.7, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/11" },
+        { "indicatorCode": "poverty_incidence", "value": 53.0, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/11" }
+      ]
+    },
+    {
+      "regionCode": "KD",
+      "regionName": "Kolda",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/14",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 13771, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/14" },
+        { "indicatorCode": "population_total", "value": 916513, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/14" },
+        { "indicatorCode": "population_male", "value": 468769, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/14" },
+        { "indicatorCode": "population_female", "value": 447744, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/14" },
+        { "indicatorCode": "civil_registration_rate", "value": 56.6, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/14" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 51.9, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/14" },
+        { "indicatorCode": "literacy_rate", "value": 45.3, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/14" },
+        { "indicatorCode": "poverty_incidence", "value": 56.6, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/14" }
+      ]
+    },
+    {
+      "regionCode": "KE",
+      "regionName": "Kédougou",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/13",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 16800, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/13" },
+        { "indicatorCode": "population_total", "value": 245288, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/13" },
+        { "indicatorCode": "population_male", "value": 132327, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/13" },
+        { "indicatorCode": "population_female", "value": 112960, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/13" },
+        { "indicatorCode": "civil_registration_rate", "value": 75.8, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/13" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 63.2, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/13" },
+        { "indicatorCode": "literacy_rate", "value": 42.4, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/13" },
+        { "indicatorCode": "poverty_incidence", "value": 61.9, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/13" }
+      ]
+    },
+    {
+      "regionCode": "FK",
+      "regionName": "Fatick",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/10",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 6849, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/10" },
+        { "indicatorCode": "population_total", "value": 908858, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/10" },
+        { "indicatorCode": "population_male", "value": 454783, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/10" },
+        { "indicatorCode": "population_female", "value": 454075, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/10" },
+        { "indicatorCode": "civil_registration_rate", "value": 79.5, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/10" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 61.1, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/10" },
+        { "indicatorCode": "literacy_rate", "value": 53.7, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/10" },
+        { "indicatorCode": "poverty_incidence", "value": 49.2, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/10" }
+      ]
+    },
+    {
+      "regionCode": "SL",
+      "regionName": "Saint-Louis",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/8",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 19241, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/8" },
+        { "indicatorCode": "population_total", "value": 1204863, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/8" },
+        { "indicatorCode": "population_male", "value": 612088, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/8" },
+        { "indicatorCode": "population_female", "value": 592775, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/8" },
+        { "indicatorCode": "civil_registration_rate", "value": 71.5, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/8" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 57.4, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/8" },
+        { "indicatorCode": "literacy_rate", "value": 43.0, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/8" },
+        { "indicatorCode": "poverty_incidence", "value": 40.1, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/8" }
+      ]
+    },
+    {
+      "regionCode": "TC",
+      "regionName": "Tambacounda",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/7",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 42364, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/7" },
+        { "indicatorCode": "population_total", "value": 988193, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/7" },
+        { "indicatorCode": "population_male", "value": 504595, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/7" },
+        { "indicatorCode": "population_female", "value": 483598, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/7" },
+        { "indicatorCode": "civil_registration_rate", "value": 55.2, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/7" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 44.6, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/7" },
+        { "indicatorCode": "literacy_rate", "value": 33.8, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/7" },
+        { "indicatorCode": "poverty_incidence", "value": 61.9, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/7" }
+      ]
+    },
+    {
+      "regionCode": "MT",
+      "regionName": "Matam",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/16",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 29445, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/16" },
+        { "indicatorCode": "population_total", "value": 833657, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/16" },
+        { "indicatorCode": "population_male", "value": 429115, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/16" },
+        { "indicatorCode": "population_female", "value": 404541, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/16" },
+        { "indicatorCode": "civil_registration_rate", "value": 67.8, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/16" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 42.1, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/16" },
+        { "indicatorCode": "literacy_rate", "value": 24.1, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/16" },
+        { "indicatorCode": "poverty_incidence", "value": 47.7, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/16" }
+      ]
+    },
+    {
+      "regionCode": "ZG",
+      "regionName": "Ziguinchor",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/18",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 7352, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/18" },
+        { "indicatorCode": "population_total", "value": 612343, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/18" },
+        { "indicatorCode": "population_male", "value": 316326, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/18" },
+        { "indicatorCode": "population_female", "value": 296018, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/18" },
+        { "indicatorCode": "civil_registration_rate", "value": 82.2, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/18" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 87.3, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/18" },
+        { "indicatorCode": "literacy_rate", "value": 66.9, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/18" },
+        { "indicatorCode": "poverty_incidence", "value": 51.1, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/18" }
+      ]
+    },
+    {
+      "regionCode": "LG",
+      "regionName": "Louga",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/15",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 24847, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/15" },
+        { "indicatorCode": "population_total", "value": 1127119, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/15" },
+        { "indicatorCode": "population_male", "value": 564468, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/15" },
+        { "indicatorCode": "population_female", "value": 562651, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/15" },
+        { "indicatorCode": "civil_registration_rate", "value": 65.8, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/15" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 30.3, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/15" },
+        { "indicatorCode": "literacy_rate", "value": 32.3, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/15" },
+        { "indicatorCode": "poverty_incidence", "value": 43.4, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/15" }
+      ]
+    },
+    {
+      "regionCode": "SD",
+      "regionName": "Sédhiou",
+      "profilePageUrl": "https://www.ansd.sn/taxonomy/term/17",
+      "indicators": [
+        { "indicatorCode": "area_km2", "value": 7341, "year": null, "sourceLabel": "ANSD", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/17" },
+        { "indicatorCode": "population_total", "value": 590784, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/17" },
+        { "indicatorCode": "population_male", "value": 303334, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/17" },
+        { "indicatorCode": "population_female", "value": 287450, "year": 2023, "sourceLabel": "ANSD/RGPH5-2023", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/17" },
+        { "indicatorCode": "civil_registration_rate", "value": 56.5, "year": 2011, "sourceLabel": "ANSD/EDS-MICS 2010-2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/17" },
+        { "indicatorCode": "gross_school_enrollment_rate", "value": 62.7, "year": 2011, "sourceLabel": "ANSD/ESPS-II 2011", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/17" },
+        { "indicatorCode": "literacy_rate", "value": 38.2, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/17" },
+        { "indicatorCode": "poverty_incidence", "value": 65.6, "year": 2019, "sourceLabel": "ANSD/EHCVM-2018/2019", "sourceReferenceUrl": "https://www.ansd.sn/taxonomy/term/17" }
+      ]
+    }
+  ]
+}

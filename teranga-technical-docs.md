@@ -1,349 +1,134 @@
-﻿# Documentation Technique - Teranga.Core
+# Technical Documentation - Teranga.Core
 
-## Table des matières
-1. [Vue d'ensemble](#vue-densemble)
-2. [Installation](#installation)
-3. [Architecture](#architecture)
-4. [Modèles de données](#modèles-de-données)
-5. [Services](#services)
-6. [Configuration](#configuration)
-7. [Exemples d'utilisation](#exemples-dutilisation)
-8. [Tests](#tests)
-9. [Performance](#performance)
-10. [Dépannage](#dépannage)
+## Overview
 
-## Vue d'ensemble
+Teranga.Core is a `.NET 10` package that embeds:
 
-Teranga.Core est un package NuGet qui fournit un accès aux données administratives du Sénégal. Il gère la hiérarchie complète des divisions administratives : régions, départements et communes.
+- the Senegal administrative reference dataset
+- a normalized ANSD regional indicators dataset
 
-### Caractéristiques principales
-- Accès asynchrone aux données
-- Thread-safe
-- Zero-configuration
-- Données embarquées
-- Performance optimisée
+The main entry point is now `ITerangaService`, which acts as a facade over both administrative data and ANSD regional data.
 
-### Prérequis
-- .NET 8.0 ou supérieur
-- Compatible avec :
-  - ASP.NET Core
-  - Blazor
-  - Applications console
-  - Applications desktop
+## Public services
 
-## Installation
+- [ITerangaService](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core/Services/ITerangaService.cs)
+- [IAnsdRegionalStatisticsService](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core/Services/IAnsdRegionalStatisticsService.cs)
 
-### Via NuGet Package Manager
-```powershell
-Install-Package Teranga.Core
-```
+`IAnsdRegionalStatisticsService` remains public for compatibility and specialized ANSD-only usage.
 
-### Via .NET CLI
-```bash
-dotnet add package Teranga.Core
-```
+## Embedded datasets
 
-### Configuration dans Program.cs
+- [teranga-data.json](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core/Data/teranga-data.json)
+- [ansd-regional-profiles.json](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core/Data/ansd-regional-profiles.json)
+
+## Administrative capabilities
+
+`ITerangaService` exposes:
+
+- lookup by region, department, and commune code
+- name search for regions, departments, and communes
+- global administrative statistics
+- detailed statistics for one region
+
+Key models:
+
+- `TerangaData`
+- `Region`
+- `Departement`
+- `Commune`
+- `TerangaStatistics`
+- `RegionDetailStatistics`
+
+## ANSD facade on ITerangaService
+
+`ITerangaService` also exposes:
+
+- `GetAnsdMetadataAsync()`
+- `GetAnsdIndicatorDefinitionsAsync()`
+- `GetAnsdRegionalProfilesAsync()`
+- `GetAnsdRegionalProfileAsync(regionCode)`
+- `GetAnsdRegionalIndicatorAsync(regionCode, indicatorCode)`
+
+This is a facade over [AnsdRegionalStatisticsService.cs](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core/Services/AnsdRegionalStatisticsService.cs). The dedicated ANSD service remains the source of truth for loading the normalized ANSD dataset.
+
+## Aggregated regional profile
+
+The package adds an aggregated read model:
+
+- `RegionProfile`
+
+`GetRegionProfileAsync(regionCode)` returns:
+
+- the `Region`
+- its `Departments`
+- a flat `Communes` list
+- `RegionDetailStatistics`
+- the ANSD regional profile for the same region when available
+
+This method does not change `GetRegionByCodeAsync()`, which still returns the plain `Region` model.
+
+## Search and pagination
+
+The package also exposes:
+
+- `SearchRegionProfilesAsync(query)`
+- `GetRegionProfilesAsync(page, pageSize)`
+
+Behavior:
+
+- search matches region code or name
+- search ignores case and accents
+- pagination uses `page` and `pageSize`
+- paginated results are wrapped in `PagedResult<T>`
+- paginated region profiles are ordered by region name
+
+## Dependency injection
+
+[ServiceCollectionExtensions.cs](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core/Extensions/ServiceCollectionExtensions.cs) registers:
+
 ```csharp
-using Teranga.Core.Extensions;
-
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddTerangaCore();
-}
-```
-
-## Architecture
-
-### Structure du projet
-```
-Teranga.Core/
-├── Models/
-│   ├── BaseEntity.cs
-│   ├── TerangaData.cs
-│   ├── Region.cs
-│   ├── Department.cs
-│   └── Commune.cs
-├── Interfaces/
-│   └── ITerangaService.cs
-├── Services/
-│   └── TerangaService.cs
-├── Extensions/
-│   └── ServiceCollectionExtensions.cs
-├── Exceptions/
-│   └── TerangaException.cs
-└── Data/
-    └── teranga-data.json
-```
-
-### Diagramme de classes
-```mermaid
-classDiagram
-    BaseEntity <|-- TerangaData
-    BaseEntity <|-- Region
-    BaseEntity <|-- Department
-    BaseEntity <|-- Commune
-    TerangaData --> Region
-    Region --> Department
-    Department --> Commune
-    ITerangaService <|.. TerangaService
-    
-    class BaseEntity {
-        +string Code
-        +string Name
-        +string Description
-        +DateTime CreatedAt
-        +DateTime? UpdatedAt
-    }
-    
-    class TerangaData {
-        +int Population
-        +double Area
-        +string Capital
-        +string Currency
-        +string Language
-        +string Continent
-        +ICollection<Region> Regions
-    }
-```
-
-## Modèles de données
-
-### BaseEntity
-```csharp
-public abstract class BaseEntity
-{
-    public string Code { get; set; } = default!;
-    public string Name { get; set; } = default!;
-    public string? Description { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime? UpdatedAt { get; set; }
-}
-```
-
-### TerangaData
-```csharp
-public class TerangaData : BaseEntity
-{
-    public int Population { get; set; }
-    public double Area { get; set; }
-    public string Capital { get; set; } = default!;
-    public string Currency { get; set; } = default!;
-    public string Language { get; set; } = default!;
-    public string Continent { get; set; } = default!;
-    public virtual ICollection<Region> Regions { get; set; } = new List<Region>();
-}
-```
-
-## Services
-
-### ITerangaService
-```csharp
-public interface ITerangaService
-{
-    Task<TerangaData> GetTerangaDataAsync();
-    Task<IEnumerable<Region>> GetAllRegionsAsync();
-    Task<Region?> GetRegionByCodeAsync(string code);
-    Task<IEnumerable<Department>> GetDepartmentsByRegionAsync(string regionCode);
-    Task<Department?> GetDepartmentByCodeAsync(string code);
-    Task<IEnumerable<Commune>> GetCommunesByDepartmentAsync(string departmentCode);
-    Task<Commune?> GetCommuneByCodeAsync(string code);
-}
-```
-
-## Configuration
-
-Le service utilise une configuration par défaut sans nécessiter de paramétrage. Les données sont embarquées dans l'assembly.
-
-### Personnalisation (optionnelle)
-```csharp
-services.AddTerangaCore(options =>
-{
-    // Futures options de configuration
-});
-```
-
-## Exemples d'utilisation
-
-### ASP.NET Core Controller
-```csharp
-[ApiController]
-[Route("api/[controller]")]
-public class RegionsController : ControllerBase
-{
-    private readonly ITerangaService _terangaService;
-
-    public RegionsController(ITerangaService terangaService)
-    {
-        _terangaService = terangaService;
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> GetAllRegions()
-    {
-        var regions = await _terangaService.GetAllRegionsAsync();
-        return Ok(regions);
-    }
-
-    [HttpGet("{code}")]
-    public async Task<IActionResult> GetRegion(string code)
-    {
-        var region = await _terangaService.GetRegionByCodeAsync(code);
-        return region != null ? Ok(region) : NotFound();
-    }
-}
-```
-
-### Blazor Component
-```csharp
-@inject ITerangaService TerangaService
-
-<select @onchange="OnRegionSelected">
-    @foreach (var region in regions)
-    {
-        <option value="@region.Code">@region.Name</option>
-    }
-</select>
-
-@code {
-    private IEnumerable<Region> regions = new List<Region>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        regions = await TerangaService.GetAllRegionsAsync();
-    }
-
-    private async Task OnRegionSelected(ChangeEventArgs e)
-    {
-        var departments = await TerangaService.GetDepartmentsByRegionAsync(e.Value.ToString());
-        // Traitement des départements
-    }
-}
-```
-
-## Tests
-
-### Tests unitaires
-```csharp
-public class TerangaServiceTests
-{
-    private readonly ITerangaService _service;
-
-    public TerangaServiceTests()
-    {
-        var logger = new Mock<ILogger<TerangaService>>();
-        _service = new TerangaService(logger.Object);
-    }
-
-    [Fact]
-    public async Task GetRegionByCode_ShouldReturnRegion()
-    {
-        var region = await _service.GetRegionByCodeAsync("DK");
-        Assert.NotNull(region);
-        Assert.Equal("Dakar", region.Name);
-    }
-}
-```
-
-### Tests de performance
-```csharp
-[Fact]
-public async Task PerformanceTest_MultipleRequests()
-{
-    var stopwatch = Stopwatch.StartNew();
-    var tasks = new List<Task>();
-
-    for (int i = 0; i < 1000; i++)
-    {
-        tasks.Add(_service.GetAllRegionsAsync());
-    }
-
-    await Task.WhenAll(tasks);
-    stopwatch.Stop();
-
-    Assert.True(stopwatch.ElapsedMilliseconds < 1000);
-}
-```
-
-## Performance
-
-### Métriques de performance
-- Chargement initial : < 100ms
-- Requêtes simples : < 10ms
-- Requêtes complexes : < 50ms
-- Utilisation mémoire : < 10MB
-
-### Optimisations
-- Données en mémoire
-- Thread-safe avec minimal locking
-- Recherche optimisée par code
-
-## Dépannage
-
-### Erreurs communes
-
-1. TerangaException : "Data not loaded"
-```csharp
-try
-{
-    var data = await _service.GetTerangaDataAsync();
-}
-catch (TerangaException ex)
-{
-    // Le service n'est pas correctement initialisé
-}
-```
-
-2. ArgumentException : Code invalide
-```csharp
-try
-{
-    var region = await _service.GetRegionByCodeAsync("");
-}
-catch (ArgumentException ex)
-{
-    // Code région invalide
-}
-```
-
-### Logging
-Le service utilise ILogger pour la journalisation :
-```csharp
-services.AddLogging(builder =>
-{
-    builder.AddConsole();
-    builder.AddDebug();
-});
-```
-
-## Meilleures pratiques
-
-1. Injection de dépendances
-```csharp
-// ✅ Bon
 services.AddTerangaCore();
-constructor(ITerangaService service)
-
-// ❌ Mauvais
-var service = new TerangaService();
+services.AddTerangaCore(ServiceLifetime.Scoped);
 ```
 
-2. Gestion des exceptions
+The same lifetime is applied to:
+
+- `ITerangaService`
+- `IAnsdRegionalStatisticsService`
+
+## Example usage
+
 ```csharp
-// ✅ Bon
-try
-{
-    var region = await service.GetRegionByCodeAsync(code);
-    if (region == null) return NotFound();
-}
-catch (Exception ex)
-{
-    logger.LogError(ex, "Error getting region");
-    return StatusCode(500);
-}
+var region = await terangaService.GetRegionByCodeAsync("DK");
+var profile = await terangaService.GetRegionProfileAsync("DK");
+var page = await terangaService.GetRegionProfilesAsync(1, 5);
+var matches = await terangaService.SearchRegionProfilesAsync("thies");
 
-// ❌ Mauvais
-var region = await service.GetRegionByCodeAsync(code);
-return Ok(region);
+var metadata = await terangaService.GetAnsdMetadataAsync();
+var ansdProfile = await terangaService.GetAnsdRegionalProfileAsync("DK");
 ```
 
+## Testing focus
+
+The test suite should cover:
+
+- existing administrative lookups and statistics
+- ANSD facade methods on `ITerangaService`
+- `RegionProfile` consistency
+- paginated region profile listing
+- region profile search by code and by accent-insensitive name
+- DI resolution for `TerangaService` with its ANSD dependency
+
+Key test files:
+
+- [TerangaServiceTests.cs](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core.Tests/TerangaServiceTests.cs)
+- [TerangaDataIntegrityTests.cs](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core.Tests/TerangaDataIntegrityTests.cs)
+- [AnsdRegionalStatisticsServiceTests.cs](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core.Tests/AnsdRegionalStatisticsServiceTests.cs)
+- [TerangaServicePerformanceTests.cs](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core.Tests/TerangaServicePerformanceTests.cs)
+
+## Maintenance notes
+
+- keep the administrative dataset and ANSD dataset as separate domains
+- use `RegionProfile` for aggregated reads instead of enriching `Region`
+- keep `IAnsdRegionalStatisticsService` compatible while `ITerangaService` remains the main facade
+- update package docs and release notes whenever public methods or read models change

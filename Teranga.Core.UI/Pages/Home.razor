@@ -1,7 +1,82 @@
-﻿@page "/"
+@page "/"
+@using Teranga.Core.Models
+@using Teranga.Core.Services
+@inject ITerangaService TerangaService
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Teranga.Core</PageTitle>
 
-<h1>Hello, world!</h1>
+@if (_statistics is null)
+{
+    <div class="teranga-loader">
+        <span></span><span></span><span></span>
+    </div>
+}
+else
+{
+    <div class="page-header fade-in">
+        <h1>Teranga.Core</h1>
+        <p class="page-subtitle">
+            Données administratives du Sénégal — régions, départements, communes & indicateurs ANSD.
+        </p>
+    </div>
 
-Welcome to your new app.
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card stat-card h-100 fade-in fade-in-delay-1">
+                <div class="card-body">
+                    <div class="stat-label">Régions</div>
+                    <div class="stat-value">@_statistics.RegionCount</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card teal h-100 fade-in fade-in-delay-2">
+                <div class="card-body">
+                    <div class="stat-label">Départements</div>
+                    <div class="stat-value">@_statistics.DepartmentCount</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card gold h-100 fade-in fade-in-delay-3">
+                <div class="card-body">
+                    <div class="stat-label">Communes</div>
+                    <div class="stat-value">@_statistics.CommuneCount</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card fade-in fade-in-delay-4">
+        <div class="card-header">Module ANSD</div>
+        <div class="card-body">
+            <p class="mb-3" style="color: var(--text-secondary); font-size: 0.9rem;">
+                Profils régionaux ANSD normalisés et alignés sur les codes du package.
+            </p>
+            <div class="d-flex align-items-center gap-3 mb-3 flex-wrap">
+                <span class="data-chip teal">@_ansdRegionCount régions</span>
+                <span class="data-chip terracotta">@_ansdIndicatorCount indicateurs</span>
+            </div>
+            <a class="btn btn-outline-primary" href="ansd-regions">Voir les profils ANSD →</a>
+        </div>
+    </div>
+}
+
+@code {
+    private TerangaStatistics? _statistics;
+    private int _ansdIndicatorCount;
+    private int _ansdRegionCount;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var statisticsTask = TerangaService.GetStatisticsAsync();
+        var definitionsTask = TerangaService.GetAnsdIndicatorDefinitionsAsync();
+        var profilesTask = TerangaService.GetAnsdRegionalProfilesAsync();
+
+        await Task.WhenAll(statisticsTask, definitionsTask, profilesTask);
+
+        _statistics = await statisticsTask;
+        _ansdIndicatorCount = (await definitionsTask).Count;
+        _ansdRegionCount = (await profilesTask).Count;
+    }
+}

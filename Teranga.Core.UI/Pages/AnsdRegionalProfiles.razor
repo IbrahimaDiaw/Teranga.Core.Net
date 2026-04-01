@@ -1,0 +1,381 @@
+@page "/ansd-regions"
+@using Teranga.Core.Models
+@using Teranga.Core.Services
+@inject ITerangaService TerangaService
+
+<PageTitle>Profils regionaux</PageTitle>
+
+<div class="page-header fade-in">
+    <h1>Profils regionaux</h1>
+    <p class="page-subtitle">Region, departements, communes, statistiques et indicateurs ANSD dans une seule vue.</p>
+</div>
+
+<div class="row mb-4 fade-in fade-in-delay-1">
+    <div class="col-lg-8">
+        <input class="form-control"
+               placeholder="Rechercher une region par code ou nom..."
+               @bind="_searchTerm"
+               @bind:event="oninput"
+               @onkeydown="HandleKeyDown" />
+    </div>
+    <div class="col-lg-2 col-md-6 d-grid mt-2 mt-lg-0">
+        <button class="btn btn-primary" @onclick="ApplySearchAsync">Rechercher</button>
+    </div>
+    <div class="col-lg-2 col-md-6 d-grid mt-2 mt-lg-0">
+        <button class="btn btn-outline-secondary" @onclick="ResetSearchAsync" disabled="@(!_isSearchMode)">Reinitialiser</button>
+    </div>
+</div>
+
+@if (_loading)
+{
+    <div class="teranga-loader">
+        <span></span><span></span><span></span>
+    </div>
+}
+else if (_metadata is null)
+{
+    <div class="alert alert-warning">Impossible de charger les profils regionaux.</div>
+}
+else
+{
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card stat-card h-100 fade-in fade-in-delay-1">
+                <div class="card-body">
+                    <div class="stat-label">Couverture</div>
+                    <div class="stat-value small">@_totalCount <span style="font-family: var(--font-body); font-size: 0.8rem; color: var(--text-muted);">regions</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card teal h-100 fade-in fade-in-delay-2">
+                <div class="card-body">
+                    <div class="stat-label">Indicateurs ANSD</div>
+                    <div class="stat-value small">@_definitions.Count</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card gold h-100 fade-in fade-in-delay-3">
+                <div class="card-body">
+                    <div class="stat-label">Normalise le</div>
+                    <div style="font-family: var(--font-display); font-size: 1.1rem;">@_metadata.NormalizedOn</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 fade-in fade-in-delay-4">
+        <div class="card-header">Jeu de donnees</div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <div class="stat-label">Nom</div>
+                    <div style="font-weight: 500; font-size: 0.9rem;">@_metadata.DatasetName</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="stat-label">Source</div>
+                    <div style="font-weight: 500; font-size: 0.9rem;">@_metadata.SourceOrganization</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="stat-label">Niveau</div>
+                    <div style="font-size: 0.9rem;">@_metadata.CoverageLevel</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="stat-label">Catalogue</div>
+                    <a href="@_metadata.SourceCatalogUrl" target="_blank" rel="noopener noreferrer" style="font-size: 0.85rem; word-break: break-all;">@_metadata.SourceCatalogUrl</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <span>@_currentProfiles.Count profil@(_currentProfiles.Count > 1 ? "s" : "")</span>
+                    @if (!_isSearchMode && _pagedProfiles is not null)
+                    {
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Page @_pagedProfiles.Page / @_pagedProfiles.TotalPages</span>
+                    }
+                </div>
+                <div class="list-group list-group-flush">
+                    @foreach (var profile in _currentProfiles)
+                    {
+                        <button class="list-group-item list-group-item-action @(_selectedProfile?.RegionCode == profile.RegionCode ? "active" : "")"
+                                @onclick="() => SelectProfileAsync(profile.RegionCode)">
+                            <div style="font-weight: 500;">@profile.RegionName</div>
+                            <div style="font-size: 0.75rem; opacity: 0.65;">@profile.RegionCode</div>
+                        </button>
+                    }
+                </div>
+                @if (!_isSearchMode && _pagedProfiles is not null)
+                {
+                    <div class="card-body border-top">
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-secondary flex-fill" @onclick="PreviousPageAsync" disabled="@(!_pagedProfiles.HasPreviousPage)">Precedent</button>
+                            <button class="btn btn-outline-secondary flex-fill" @onclick="NextPageAsync" disabled="@(!_pagedProfiles.HasNextPage)">Suivant</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            @if (_selectedProfile is null)
+            {
+                <div class="card">
+                    <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 240px; color: var(--text-muted);">
+                        <p class="mb-0">Selectionnez une region pour voir son profil complet.</p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="card">
+                    <div class="card-header d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <div>
+                            <strong>@_selectedProfile.RegionName</strong>
+                            <span class="data-chip teal ms-2">@_selectedProfile.RegionCode</span>
+                        </div>
+                        @if (!string.IsNullOrWhiteSpace(_selectedProfile.AnsdProfile?.ProfilePageUrl))
+                        {
+                            <a href="@_selectedProfile.AnsdProfile.ProfilePageUrl" target="_blank" rel="noopener noreferrer" style="font-size: 0.8rem;">
+                                Reference ANSD
+                            </a>
+                        }
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card stat-card">
+                                    <div class="card-body py-3">
+                                        <div class="stat-label">Departements</div>
+                                        <div style="font-family: var(--font-display); font-size: 1.15rem;">@_selectedProfile.Statistics.DepartmentCount</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card stat-card teal">
+                                    <div class="card-body py-3">
+                                        <div class="stat-label">Communes</div>
+                                        <div style="font-family: var(--font-display); font-size: 1.15rem;">@_selectedProfile.Statistics.CommuneCount</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card stat-card gold">
+                                    <div class="card-body py-3">
+                                        <div class="stat-label">Population</div>
+                                        <div style="font-family: var(--font-display); font-size: 1.15rem;">@FormatValue(GetIndicator("population_total"))</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card stat-card red">
+                                    <div class="card-body py-3">
+                                        <div class="stat-label">Pauvrete</div>
+                                        <div style="font-family: var(--font-display); font-size: 1.15rem;">@FormatValue(GetIndicator("poverty_incidence"))</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong>Moyenne :</strong> @_selectedProfile.Statistics.AverageCommunesPerDepartment.ToString("0.00") communes par departement.
+                            @if (_selectedProfile.Statistics.DepartmentWithMostCommunes is not null)
+                            {
+                                <span>
+                                    <strong> Department principal :</strong> @_selectedProfile.Statistics.DepartmentWithMostCommunes.DepartmentName (@_selectedProfile.Statistics.DepartmentWithMostCommunes.CommuneCount communes)
+                                </span>
+                            }
+                        </p>
+
+                        <div class="table-responsive mb-4">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Departement</th>
+                                        <th>Code</th>
+                                        <th>Communes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var department in _selectedProfile.Departments.OrderBy(department => department.Name, StringComparer.OrdinalIgnoreCase))
+                                    {
+                                        <tr>
+                                            <td style="font-weight: 500;">@department.Name</td>
+                                            <td><span class="data-chip">@department.Code</span></td>
+                                            <td>@department.Communes.Count</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        @if (_selectedProfile.AnsdProfile is not null)
+                        {
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Indicateur</th>
+                                            <th>Valeur</th>
+                                            <th>Unite</th>
+                                            <th>Annee</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var indicator in _selectedProfile.AnsdProfile.Indicators.OrderBy(indicator => indicator.IndicatorName, StringComparer.OrdinalIgnoreCase))
+                                        {
+                                            <tr>
+                                                <td style="font-weight: 500;">@indicator.IndicatorName</td>
+                                                <td><strong>@FormatValue(indicator, includeUnit: false)</strong></td>
+                                                <td style="color: var(--text-muted);">@indicator.Unit</td>
+                                                <td>@(indicator.Year?.ToString() ?? "n/a")</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    private const int PageSize = 5;
+    private bool _loading = true;
+    private string _searchTerm = string.Empty;
+    private bool _isSearchMode;
+    private int _totalCount;
+    private AnsdDatasetMetadata? _metadata;
+    private IReadOnlyList<AnsdIndicatorDefinition> _definitions = [];
+    private PagedResult<RegionProfile>? _pagedProfiles;
+    private IReadOnlyList<RegionProfile> _currentProfiles = [];
+    private RegionProfile? _selectedProfile;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var metadataTask = TerangaService.GetAnsdMetadataAsync();
+            var definitionsTask = TerangaService.GetAnsdIndicatorDefinitionsAsync();
+
+            await Task.WhenAll(metadataTask, definitionsTask);
+
+            _metadata = await metadataTask;
+            _definitions = await definitionsTask;
+
+            await LoadPageAsync(1);
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private async Task HandleKeyDown(Microsoft.AspNetCore.Components.Web.KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await ApplySearchAsync();
+        }
+    }
+
+    private async Task ApplySearchAsync()
+    {
+        _loading = true;
+
+        try
+        {
+            if (string.IsNullOrWhiteSpace(_searchTerm))
+            {
+                await ResetSearchAsync();
+                return;
+            }
+
+            _isSearchMode = true;
+            _pagedProfiles = null;
+            _currentProfiles = await TerangaService.SearchRegionProfilesAsync(_searchTerm);
+            _totalCount = _currentProfiles.Count;
+            _selectedProfile = _currentProfiles.FirstOrDefault();
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private async Task ResetSearchAsync()
+    {
+        _searchTerm = string.Empty;
+        _isSearchMode = false;
+        await LoadPageAsync(1);
+    }
+
+    private async Task PreviousPageAsync()
+    {
+        if (_pagedProfiles is not null && _pagedProfiles.HasPreviousPage)
+        {
+            await LoadPageAsync(_pagedProfiles.Page - 1);
+        }
+    }
+
+    private async Task NextPageAsync()
+    {
+        if (_pagedProfiles is not null && _pagedProfiles.HasNextPage)
+        {
+            await LoadPageAsync(_pagedProfiles.Page + 1);
+        }
+    }
+
+    private async Task LoadPageAsync(int page)
+    {
+        _loading = true;
+
+        try
+        {
+            _pagedProfiles = await TerangaService.GetRegionProfilesAsync(page, PageSize);
+            _currentProfiles = _pagedProfiles.Items;
+            _totalCount = _pagedProfiles.TotalCount;
+            _selectedProfile = _currentProfiles.FirstOrDefault();
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private async Task SelectProfileAsync(string regionCode)
+    {
+        _selectedProfile = await TerangaService.GetRegionProfileAsync(regionCode);
+    }
+
+    private AnsdRegionalIndicator? GetIndicator(string indicatorCode)
+    {
+        return _selectedProfile?.AnsdProfile?.Indicators.FirstOrDefault(
+            indicator => string.Equals(indicator.IndicatorCode, indicatorCode, StringComparison.OrdinalIgnoreCase));
+    }
+
+    private static string FormatValue(AnsdRegionalIndicator? indicator, bool includeUnit = true)
+    {
+        if (indicator is null)
+        {
+            return "n/a";
+        }
+
+        var formattedValue = indicator.Unit switch
+        {
+            "habitants" => indicator.Value.ToString("N0"),
+            "km2" => indicator.Value.ToString("N0"),
+            "%" => indicator.Value.ToString("0.0"),
+            _ => indicator.Value.ToString("0.##")
+        };
+
+        return includeUnit ? $"{formattedValue} {indicator.Unit}" : formattedValue;
+    }
+}

@@ -1,0 +1,328 @@
+@page "/statistics"
+@using Teranga.Core.Models
+@using Teranga.Core.Services
+@inject ITerangaService TerangaService
+
+<PageTitle>Statistiques</PageTitle>
+
+<div class="page-header fade-in">
+    <h1>Statistiques</h1>
+    <p class="page-subtitle">Vue d'ensemble des données administratives du Sénégal.</p>
+</div>
+
+@if (_loading)
+{
+    <div class="teranga-loader">
+        <span></span><span></span><span></span>
+    </div>
+}
+else if (_statistics is null)
+{
+    <div class="alert alert-warning">Impossible de charger les statistiques.</div>
+}
+else
+{
+    <div class="row g-3 mb-4">
+        <div class="col-md-3 col-sm-6">
+            <div class="card stat-card h-100 fade-in fade-in-delay-1">
+                <div class="card-body">
+                    <div class="stat-label">Régions</div>
+                    <div class="stat-value">@_statistics.RegionCount</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card stat-card teal h-100 fade-in fade-in-delay-2">
+                <div class="card-body">
+                    <div class="stat-label">Départements</div>
+                    <div class="stat-value">@_statistics.DepartmentCount</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card stat-card gold h-100 fade-in fade-in-delay-3">
+                <div class="card-body">
+                    <div class="stat-label">Communes</div>
+                    <div class="stat-value">@_statistics.CommuneCount</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card stat-card red h-100 fade-in fade-in-delay-4">
+                <div class="card-body">
+                    <div class="stat-label">Langues locales</div>
+                    <div class="stat-value">@_statistics.LocalLanguageCount</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3 mb-4 fade-in fade-in-delay-4">
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <div class="card-header">Moyennes</div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="stat-label">Départements / région</div>
+                        <div class="stat-value small">@_statistics.AverageDepartmentsPerRegion.ToString("0.00")</div>
+                    </div>
+                    <div>
+                        <div class="stat-label">Communes / département</div>
+                        <div class="stat-value small">@_statistics.AverageCommunesPerDepartment.ToString("0.00")</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <div class="card-header">Région avec le plus de communes</div>
+                <div class="card-body">
+                    <div class="stat-value small" style="margin-bottom: 0.35rem;">@_statistics.RegionWithMostCommunes?.RegionName</div>
+                    <span class="data-chip terracotta">@_statistics.RegionWithMostCommunes?.CommuneCount communes</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <div class="card-header">Département avec le plus de communes</div>
+                <div class="card-body">
+                    <div class="stat-value small" style="margin-bottom: 0.35rem;">@_statistics.DepartmentWithMostCommunes?.DepartmentName</div>
+                    <span class="data-chip teal">@_statistics.DepartmentWithMostCommunes?.CommuneCount communes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header">Détail par région</div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Région</th>
+                                    <th>Dépts</th>
+                                    <th>Communes</th>
+                                    <th>Moy.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var region in _statistics.Regions)
+                                {
+                                    <tr class="@(_selectedRegionCode == region.RegionCode ? "table-primary" : null)"
+                                        style="cursor: pointer;"
+                                        @onclick="() => LoadRegionDetailsAsync(region.RegionCode)">
+                                        <td><code style="font-size: 0.8rem;">@region.RegionCode</code></td>
+                                        <td style="font-weight: 500;">@region.RegionName</td>
+                                        <td>@region.DepartmentCount</td>
+                                        <td>@region.CommuneCount</td>
+                                        <td>@region.AverageCommunesPerDepartment.ToString("0.0")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header">Top 10 départements</div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Département</th>
+                                    <th>Région</th>
+                                    <th>Communes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int rank = 0; }
+                                @foreach (var department in _statistics.TopDepartmentsByCommuneCount)
+                                {
+                                    rank++;
+                                    <tr>
+                                        <td><span style="color: var(--text-muted); font-size: 0.8rem;">@rank</span></td>
+                                        <td style="font-weight: 500;">@department.DepartmentName</td>
+                                        <td style="color: var(--text-secondary);">@department.RegionName</td>
+                                        <td><strong>@department.CommuneCount</strong></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">Répartition par département</div>
+        <div class="card-body">
+            <div class="row g-3 align-items-end mb-4">
+                <div class="col-md-6">
+                    <label class="form-label" for="region-select">Région</label>
+                    <select id="region-select" class="form-select" @bind="_selectedRegionCode" @bind:after="OnSelectedRegionChangedAsync">
+                        @foreach (var region in _statistics.Regions.OrderBy(region => region.RegionName, StringComparer.OrdinalIgnoreCase))
+                        {
+                            <option value="@region.RegionCode">@region.RegionName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            @if (_selectedRegionStatistics is not null)
+            {
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="card stat-card" style="border-top-width: 2px;">
+                            <div class="card-body py-3">
+                                <div class="stat-label">Région</div>
+                                <div style="font-family: var(--font-display); font-size: 1.2rem;">@_selectedRegionStatistics.RegionName</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card stat-card teal" style="border-top-width: 2px;">
+                            <div class="card-body py-3">
+                                <div class="stat-label">Départements</div>
+                                <div class="stat-value small">@_selectedRegionStatistics.DepartmentCount</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card stat-card gold" style="border-top-width: 2px;">
+                            <div class="card-body py-3">
+                                <div class="stat-label">Communes</div>
+                                <div class="stat-value small">@_selectedRegionStatistics.CommuneCount</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (_selectedRegionProfile?.AnsdProfile is not null)
+                {
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="card stat-card red" style="border-top-width: 2px;">
+                                <div class="card-body py-3">
+                                    <div class="stat-label">Population ANSD</div>
+                                    <div class="stat-value small">@FormatAnsdIndicator("population_total")</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card stat-card teal" style="border-top-width: 2px;">
+                                <div class="card-body py-3">
+                                    <div class="stat-label">Alphabétisation</div>
+                                    <div class="stat-value small">@FormatAnsdIndicator("literacy_rate")</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card stat-card gold" style="border-top-width: 2px;">
+                                <div class="card-body py-3">
+                                    <div class="stat-label">Pauvreté</div>
+                                    <div class="stat-value small">@FormatAnsdIndicator("poverty_incidence")</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="d-flex flex-wrap gap-3 mb-4" style="font-size: 0.875rem; color: var(--text-secondary);">
+                    <span><strong style="color: var(--text-primary);">Moyenne :</strong> @_selectedRegionStatistics.AverageCommunesPerDepartment.ToString("0.00") communes/dépt</span>
+                    <span><strong style="color: var(--text-primary);">Principal :</strong> @_selectedRegionStatistics.DepartmentWithMostCommunes?.DepartmentName (@_selectedRegionStatistics.DepartmentWithMostCommunes?.CommuneCount)</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Département</th>
+                                <th>Communes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var department in _selectedRegionStatistics.Departments)
+                            {
+                                <tr>
+                                    <td><code style="font-size: 0.8rem;">@department.DepartmentCode</code></td>
+                                    <td style="font-weight: 500;">@department.DepartmentName</td>
+                                    <td>@department.CommuneCount</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    private bool _loading = true;
+    private TerangaStatistics? _statistics;
+    private RegionDetailStatistics? _selectedRegionStatistics;
+    private RegionProfile? _selectedRegionProfile;
+    private string _selectedRegionCode = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _statistics = await TerangaService.GetStatisticsAsync();
+            _selectedRegionCode = _statistics.Regions.FirstOrDefault()?.RegionCode ?? string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(_selectedRegionCode))
+            {
+                await LoadRegionDetailsAsync(_selectedRegionCode);
+            }
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private async Task OnSelectedRegionChangedAsync()
+    {
+        await LoadRegionDetailsAsync(_selectedRegionCode);
+    }
+
+    private async Task LoadRegionDetailsAsync(string regionCode)
+    {
+        _selectedRegionCode = regionCode;
+        _selectedRegionProfile = await TerangaService.GetRegionProfileAsync(regionCode);
+        _selectedRegionStatistics = _selectedRegionProfile?.Statistics;
+    }
+
+    private string FormatAnsdIndicator(string indicatorCode)
+    {
+        var indicator = _selectedRegionProfile?.AnsdProfile?.Indicators.FirstOrDefault(
+            item => string.Equals(item.IndicatorCode, indicatorCode, StringComparison.OrdinalIgnoreCase));
+
+        if (indicator is null)
+        {
+            return "n/a";
+        }
+
+        var formattedValue = indicator.Unit switch
+        {
+            "habitants" => indicator.Value.ToString("N0"),
+            "km2" => indicator.Value.ToString("N0"),
+            "%" => indicator.Value.ToString("0.0"),
+            _ => indicator.Value.ToString("0.##")
+        };
+
+        return $"{formattedValue} {indicator.Unit}";
+    }
+}

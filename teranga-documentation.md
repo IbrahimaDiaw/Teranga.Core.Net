@@ -1,510 +1,188 @@
-# Documentation des Codes Administratifs du Sénégal
+# Teranga Documentation
 
-## Structure des Codes
+## Purpose
 
-La codification suit une structure hiérarchique :
-- **Région** : 2 caractères (ex: DK)
-- **Département** : 3 caractères (ex: DK1)
-- **Commune** : 5 caractères (ex: DK1C1)
+This document describes the administrative code system used by `Teranga.Core` and the practical rules for consuming the package datasets.
 
-## Liste des Codes par Région
+It complements:
 
-### Dakar (DK)
-- **Département de Dakar (DK1)**
-  - Plateau (DK1C1)
-  - Médina (DK1C2)
-  - Grand Dakar (DK1C3)
-  - Biscuiterie (DK1C4)
-  - HLM (DK1C5)
-  - Hann Bel-Air (DK1C6)
-  - Sicap-Liberté (DK1C7)
-  - Dieuppeul-Derklé (DK1C8)
+- [README.md](D:/Projects/Nugets/Teranga.Core.Net/README.md)
+- [teranga-technical-docs.md](D:/Projects/Nugets/Teranga.Core.Net/teranga-technical-docs.md)
 
-- **Département de Guédiawaye (DK2)**
-  - Golf Sud (DK2C1)
-  - Sam Notaire (DK2C2)
-  - Ndiarème Limamoulaye (DK2C3)
-  - Wakhinane Nimzatt (DK2C4)
-  - Médina Gounass (DK2C5)
+## Package Scope
 
-- **Département de Pikine (DK3)**
-  - Pikine Est (DK3C1)
-  - Pikine Nord (DK3C2)
-  - Pikine Ouest (DK3C3)
-  - Dalifort-Foirail (DK3C4)
-  - Djiddah Thiaroye Kao (DK3C5)
-  - Guinaw Rail Nord (DK3C6)
-  - Guinaw Rail Sud (DK3C7)
+`Teranga.Core` currently exposes two separate data domains:
 
-- **Département de Rufisque (DK4)**
-  - Rufisque Est (DK4C1)
-  - Rufisque Nord (DK4C2)
-  - Rufisque Ouest (DK4C3)
-  - Bargny (DK4C4)
-  - Sébikotane (DK4C5)
-  - Sangalkam (DK4C6)
-  - Yène (DK4C7)
+- the Senegal administrative reference dataset
+- the ANSD regional indicators dataset
 
-### Diourbel (DB)
-- **Département de Diourbel (DB1)**
-  - Diourbel (DB1C1)
-  - Ndoulo (DB1C2)
-  - Ngohe (DB1C3)
-  - Pattar (DB1C4)
-  - Tocky Gare (DB1C5)
+The administrative reference dataset is the source of truth for region, department, and commune codes. The ANSD dataset is normalized and mapped onto those region codes.
 
-- **Département de Bambey (DB2)**
-  - Bambey (DB2C1)
-  - Gawane (DB2C2)
-  - Lambaye (DB2C3)
-  - Ngoye (DB2C4)
-  - Thiakhar (DB2C5)
+## Administrative Code Structure
 
-- **Département de Mbacké (DB3)**
-  - Mbacké (DB3C1)
-  - Touba Mosquée (DB3C2)
-  - Dalla Ngabou (DB3C3)
-  - Missirah (DB3C4)
-  - Taif (DB3C5)
+The code system is hierarchical.
 
-### Fatick (FK)
-- **Département de Fatick (FK1)**
-  - Fatick (FK1C1)
-  - Dioffior (FK1C2)
-  - Diakhao (FK1C3)
-  - Thiare Ndialgui (FK1C4)
+- Region: 2 letters
+  - Example: `DK`
+- Department: region code + numeric suffix
+  - Example: `DK1`
+- Commune: department code + `C` + numeric suffix
+  - Example: `DK1C17`
 
-- **Département de Foundiougne (FK2)**
-  - Foundiougne (FK2C1)
-  - Sokone (FK2C2)
-  - Karang Poste (FK2C3)
-  - Passy (FK2C4)
-  - Soum (FK2C5)
+This hierarchy allows deterministic parent-child relationships:
 
-- **Département de Gossas (FK3)**
-  - Gossas (FK3C1)
-  - Colobane (FK3C2)
-  - Mbar (FK3C3)
-  - Ndiene Lagane (FK3C4)
+- a department belongs to one region
+- a commune belongs to one department
+- commune and department codes inherit the prefix of their parent territory
 
-### Kaolack (KL)
-- **Département de Kaolack (KL1)**
-  - Kaolack Nord (KL1C1)
-  - Kaolack Sud (KL1C2)
-  - Kahone (KL1C3)
-  - Ndoffane (KL1C4)
-  - Gandiaye (KL1C5)
+## Region Codes
 
-- **Département de Nioro du Rip (KL2)**
-  - Nioro (KL2C1)
-  - Keur Madiabel (KL2C2)
-  - Medina Sabakh (KL2C3)
-  - Gainthe Kaye (KL2C4)
+The embedded administrative dataset currently uses these region codes:
 
-- **Département de Guinguinéo (KL3)**
-  - Guinguinéo (KL3C1)
-  - Mboss (KL3C2)
-  - Ngathie Naoudé (KL3C3)
-  - Fass (KL3C4)
+- `DK` Dakar
+- `DL` Diourbel
+- `FK` Fatick
 
-### Kolda (KD)
-- **Département de Kolda (KD1)**
-  - Kolda (KD1C1)
-  - Dabo (KD1C2)
-  - Salikégné (KD1C3)
-  - Sare Yoba Diega (KD1C4)
+The authoritative list is:
 
-- **Département de Vélingara (KD2)**
-  - Vélingara (KD2C1)
-  - Kounkane (KD2C2)
-  - Diaobe-Kabendou (KD2C3)
-  - Pakour (KD2C4)
+- `DK` Dakar
+- `DL` Diourbel
+- `FK` Fatick
+- `KF` Kaffrine
+- `KD` Kolda
+- `KL` Kaolack
+- `KE` Kedougou
+- `LG` Louga
+- `MT` Matam
+- `SL` Saint-Louis
+- `SD` Sedhiou
+- `TC` Tambacounda
+- `TH` Thies
+- `ZG` Ziguinchor
 
-- **Département de Médina Yoro Foulah (KD3)**
-  - Médina Yoro Foulah (KD3C1)
-  - Pata (KD3C2)
-  - Kerewane (KD3C3)
-  - Bignarabe (KD3C4)
+Important:
 
-### Louga (LG)
-- **Département de Louga (LG1)**
-  - Louga (LG1C1)
-  - Ndiagne (LG1C2)
-  - Guéoul (LG1C3)
-  - Mbédiène (LG1C4)
-  - Niomre (LG1C5)
+- older informal mappings such as `DB`, `KG`, or `SE` are not the package contract
+- consumers should always use the codes returned by `ITerangaService`
 
-- **Département de Kébémer (LG2)**
-  - Kébémer (LG2C1)
-  - Bandegne Wolof (LG2C2)
-  - Diokoul Diawrigne (LG2C3)
-  - Sagata Gueth (LG2C4)
+## Dataset Coverage
 
-- **Département de Linguère (LG3)**
-  - Linguère (LG3C1)
-  - Dahra (LG3C2)
-  - Barkedji (LG3C3)
-  - Yang-Yang (LG3C4)
+Current administrative dataset totals:
 
-### Saint-Louis (SL)
-- **Département de Saint-Louis (SL1)**
-  - Saint-Louis (SL1C1)
-  - Mpal (SL1C2)
-  - Fass Ngom (SL1C3)
-  - Gandon (SL1C4)
+- `14` regions
+- `46` departments
+- `552` communes
 
-- **Département de Dagana (SL2)**
-  - Dagana (SL2C1)
-  - Richard Toll (SL2C2)
-  - Ross Béthio (SL2C3)
-  - Rosso-Sénégal (SL2C4)
-  - Ndombo Sandjiry (SL2C5)
+These values are exposed by `GetStatisticsAsync()`.
 
-- **Département de Podor (SL3)**
-  - Podor (SL3C1)
-  - Ndioum (SL3C2)
-  - Golléré (SL3C3)
-  - Niandane (SL3C4)
-  - Pete (SL3C5)
+## Administrative Service API
 
-### Tambacounda (TC)
-- **Département de Tambacounda (TC1)**
-  - Tambacounda (TC1C1)
-  - Koussanar (TC1C2)
-  - Makacolibantang (TC1C3)
-  - Missirah (TC1C4)
+Main entry point:
 
-- **Département de Bakel (TC2)**
-  - Bakel (TC2C1)
-  - Diawara (TC2C2)
-  - Kidira (TC2C3)
-  - Bele (TC2C4)
+- [ITerangaService](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core/Services/ITerangaService.cs)
 
-- **Département de Goudiry (TC3)**
-  - Goudiry (TC3C1)
-  - Kothiary (TC3C2)
-  - Bala (TC3C3)
-  - Boynguel Bamba (TC3C4)
-
-- **Département de Koumpentoum (TC4)**
-  - Koumpentoum (TC4C1)
-  - Malem Niani (TC4C2)
-  - Mereto (TC4C3)
-  - Pass Coto (TC4C4)
-
-### Thiès (TH)
-- **Département de Thiès (TH1)**
-  - Thiès Est (TH1C1)
-  - Thiès Ouest (TH1C2)
-  - Thiès Nord (TH1C3)
-  - Pout (TH1C4)
-  - Fandène (TH1C5)
-
-- **Département de Mbour (TH2)**
-  - Mbour (TH2C1)
-  - Joal-Fadiouth (TH2C2)
-  - Fissel (TH2C3)
-  - Nguékhokh (TH2C4)
-  - Thiadiaye (TH2C5)
-  - Saly Portudal (TH2C6)
-
-- **Département de Tivaouane (TH3)**
-  - Tivaouane (TH3C1)
-  - Mboro (TH3C2)
-  - Meckhe (TH3C3)
-  - Pire Goureye (TH3C4)
-  - Pambal (TH3C5)
-
-### Ziguinchor (ZG)
-- **Département de Ziguinchor (ZG1)**
-  - Ziguinchor (ZG1C1)
-  - Niaguis (ZG1C2)
-  - Nyassia (ZG1C3)
-  - Boutoupa Camaracounda (ZG1C4)
-
-- **Département de Bignona (ZG2)**
-  - Bignona (ZG2C1)
-  - Thionck Essyl (ZG2C2)
-  - Diouloulou (ZG2C3)
-  - Tenghory (ZG2C4)
-
-- **Département de Oussouye (ZG3)**
-  - Oussouye (ZG3C1)
-  - Diembering (ZG3C2)
-  - Santhiaba Manjack (ZG3C3)
-  - Mlomp (ZG3C4)
-
-### Matam (MT)
-- **Département de Matam (MT1)**
-  - Matam (MT1C1)
-  - Ourossogui (MT1C2)
-  - Thilogne (MT1C3)
-  - Nguidjilone (MT1C4)
-
-- **Département de Kanel (MT2)**
-  - Kanel (MT2C1)
-  - Semme (MT2C2)
-  - Dembancane (MT2C3)
-  - Hamady Ounare (MT2C4)
-
-- **Département de Ranérou (MT3)**
-  - Ranérou (MT3C1)
-  - Velingara (MT3C2)
-  - Lougre Thioly (MT3C3)
-  - Oudalaye (MT3C4)
-
-### Kaffrine (KF)
-- **Département de Kaffrine (KF1)**
-  - Kaffrine (KF1C1)
-  - Nganda (KF1C2)
-  - Diamagadio (KF1C3)
-  - Kathiote (KF1C4)
-
-- **Département de Birkelane (KF2)**
-  - Birkelane (KF2C1)
-  - Keur Mboucki (KF2C2)
-  - Touba Mbella (KF2C3)
-  - Diamal (KF2C4)
-
-- **Département de Koungheul (KF3)**
-  - Koungheul (KF3C1)
-  - Missirah Wadene (KF3C2)
-  - Maka Yop (KF3C3)
-  - Sali Escale (KF3C4)
-
-- **Département de Malem Hodar (KF4)**
-  - Malem Hodar (KF4C1)
-  - Darou Minam (KF4C2)
-  - Ndiognick (KF4C3)
-  - Sagna (KF4C4)
-
-### Kédougou (KG)
-- **Département de Kédougou (KG1)**
-  - Kédougou (KG1C1)
-  - Bandafassi (KG1C2)
-  - Tomboronkoto (KG1C3)
-  - Dindefelo (KG1C4)
-
-- **Département de Saraya (KG2)**
-  - Saraya (KG2C1)
-  - Bembou (KG2C2)
-  - Sabodala (KG2C3)
-  - Khossanto (KG2C4)
-
-- **Département de Salémata (KG3)**
-  - Salémata (KG3C1)
-  - Dar Salam (KG3C2)
-  - Ethiolo (KG3C3)
-  - Oubadji (KG3C4)
-
-### Sédhiou (SE)
-- **Département de Sédhiou (SE1)**
-  - Sédhiou (SE1C1)
-  - Diannah Malary (SE1C2)
-  - Marsassoum (SE1C3)
-  - Bambaly (SE1C4)
-
-- **Département de Bounkiling (SE2)**
-  - Bounkiling (SE2C1)
-  - Madina Wandifa (SE2C2)
-  - Ndiamacouta (SE2C3)
-  - Boghal (SE2C4)
-
-- **Département de Goudomp (SE3)**
-  - Goudomp (SE3C1)
-  - Diattacounda (SE3C2)
-  - Samine (SE3C3)
-  - Tanaff (SE3C4)
-
-## Nomenclature
-
-- La codification est basée sur les initiales des noms des régions
-- Pour les départements, un chiffre est ajouté après le code région
-- Pour les communes, "C" + un chiffre est ajouté après le code département
-
-## Remarques
-
-1. Cette codification est utilisée pour :
-   - L'identification unique des entités administratives
-   - La gestion des données territoriales
-   - La standardisation des références géographiques
-
-2. Les codes sont immuables :
-   - Même si une entité change de nom
-   - En cas de modification administrative
-   - Pour assurer la traçabilité historique
-
-3. Utilisation dans le système :
-   - Recherche et filtrage des entités
-   - Relations hiérarchiques entre entités
-   - Génération de rapports statistiques
-   - Intégration avec d'autres systèmes
-
-## Guide d'Utilisation des Codes
-
-### Format des Requêtes
+Typical usage:
 
 ```csharp
-// Obtenir une région
-await _terangaService.GetRegionByCodeAsync("DK");  // Retourne la région de Dakar
+var region = await terangaService.GetRegionByCodeAsync("DK");
+var departments = await terangaService.GetDepartmentsByRegionAsync("DK");
+var commune = await terangaService.GetCommuneByCodeAsync("DK1C17");
 
-// Obtenir les départements d'une région
-await _terangaService.GetDepartmentsByRegionAsync("DK");  // Retourne tous les départements de Dakar
-
-// Obtenir une commune spécifique
-await _terangaService.GetCommuneByCodeAsync("DK1C1");  // Retourne la commune du Plateau
+var regionMatches = await terangaService.SearchRegionsByNameAsync("dakar");
+var departmentMatches = await terangaService.SearchDepartmentsByNameAsync("keur");
+var communeMatches = await terangaService.SearchCommunesByNameAsync("medina");
 ```
 
-### Validation des Codes
+Statistics usage:
 
-Les codes doivent respecter le format suivant :
-- Région : `^[A-Z]{2}$`
-- Département : `^[A-Z]{2}[1-9]$`
-- Commune : `^[A-Z]{2}[1-9]C[1-9]$`
-
-## Statistiques par Niveau Administratif
-
-1. Régions : 14 régions
-   - Chaque région a un code unique de 2 lettres
-   - Exemple: DK, TH, SL
-
-2. Départements : 45 départements
-   - Code composé du code région + 1 chiffre
-   - Exemple: DK1, TH2, SL3
-
-3. Communes : Plus de 500 communes
-   - Code composé du code département + C + numéro
-   - Exemple: DK1C1, TH2C3, SL1C2
-
-## Mises à Jour et Maintenance
-
-### Procédure d'Ajout de Nouvelles Entités
-
-1. Nouvelles Régions :
-```json
-{
-    "code": "XX",
-    "name": "Nouvelle Région",
-    "description": "Description",
-    "departments": []
-}
-```
-
-2. Nouveaux Départements :
-```json
-{
-    "code": "XX1",
-    "name": "Nouveau Département",
-    "regionCode": "XX",
-    "description": "Description",
-    "communes": []
-}
-```
-
-3. Nouvelles Communes :
-```json
-{
-    "code": "XX1C1",
-    "name": "Nouvelle Commune",
-    "departmentCode": "XX1",
-    "description": "Description"
-}
-```
-
-### Historique des Modifications
-
-Le système conserve :
-- Date de création des entités
-- Date de dernière modification
-- Historique des changements de noms
-
-## Bonnes Pratiques d'Utilisation
-
-1. Toujours utiliser les codes en majuscules
-2. Valider les codes avant utilisation
-3. Gérer les cas où l'entité n'existe pas
-4. Utiliser les méthodes asynchrones appropriées
-
-## Extension du Système
-
-Le système peut être étendu pour inclure :
-1. Données démographiques
-2. Coordonnées géographiques
-3. Informations économiques
-4. Statistiques locales
-
-### Exemple d'Extension
 ```csharp
-public class ExtendedRegionData : Region
-{
-    public int Population { get; set; }
-    public double Surface { get; set; }
-    public GeoCoordinates Coordinates { get; set; }
-    public List<string> MainActivities { get; set; }
-}
+var statistics = await terangaService.GetStatisticsAsync();
+var regionStatistics = await terangaService.GetRegionStatisticsAsync("DK");
 ```
 
-## Support et Dépannage
+Aggregated regional profile usage:
 
-### Problèmes Courants
-
-1. Code non trouvé :
 ```csharp
-var region = await _service.GetRegionByCodeAsync("XX");
-if (region == null)
-{
-    // Gérer l'absence de région
-}
+var profile = await terangaService.GetRegionProfileAsync("DK");
+var matches = await terangaService.SearchRegionProfilesAsync("dakar");
+var page = await terangaService.GetRegionProfilesAsync(1, 5);
 ```
 
-2. Format de code invalide :
+## Validation Rules
+
+Consumers should assume:
+
+- codes are case-insensitive for lookup purposes
+- blank codes are invalid
+- unknown codes return `null` for single-entity lookup methods
+- search is case-insensitive and accent-insensitive
+
+Recommended validation patterns:
+
+- region code shape: `^[A-Z]{2}$`
+- department code shape: `^[A-Z]{2}[0-9]+$`
+- commune code shape: `^[A-Z]{2}[0-9]+C[0-9]+$`
+
+These regexes are convenience checks only. The real source of truth is the embedded dataset.
+
+## ANSD Regional Mapping
+
+Main entry point:
+
+- [IAnsdRegionalStatisticsService](D:/Projects/Nugets/Teranga.Core.Net/Teranga.Core/Services/IAnsdRegionalStatisticsService.cs)
+
+The ANSD module:
+
+- is limited to the `Region` level in v1
+- does not modify `Region`, `Departement`, or `Commune`
+- keeps `Year`, `SourceLabel`, and `SourceReferenceUrl` on each indicator
+- reads only the normalized internal dataset bundled with the package
+
+Typical usage:
+
 ```csharp
-try
-{
-    await _service.GetRegionByCodeAsync("");
-}
-catch (ArgumentException ex)
-{
-    // Gérer l'erreur de format
-}
+var metadata = await ansdService.GetMetadataAsync();
+var profile = await ansdService.GetRegionalProfileAsync("DK");
+var indicator = await ansdService.GetRegionalIndicatorAsync("DK", "population_total");
 ```
 
-### Journalisation
+The same ANSD data is also available through `ITerangaService`:
 
-Le service enregistre :
-- Toutes les recherches
-- Les erreurs rencontrées
-- Les performances des requêtes
+```csharp
+var metadata = await terangaService.GetAnsdMetadataAsync();
+var ansdProfile = await terangaService.GetAnsdRegionalProfileAsync("DK");
+var population = await terangaService.GetAnsdRegionalIndicatorAsync("DK", "population_total");
+```
 
-## Migration des Données
+## Dependency Injection
 
-Pour migrer depuis d'autres systèmes :
-1. Mapper les anciens identifiants vers les nouveaux codes
-2. Valider la cohérence des données
-3. Mettre à jour les références
+Register the package with:
 
-## Intégration
+```csharp
+services.AddTerangaCore();
+```
 
-Le système s'intègre avec :
-1. Systèmes GIS
-2. Applications statistiques
-3. Services gouvernementaux
-4. Systèmes de reporting
+Or choose a different lifetime:
 
-## Notes Techniques
+```csharp
+services.AddTerangaCore(ServiceLifetime.Scoped);
+```
 
-1. Performance :
-   - Mise en cache des données fréquemment utilisées
-   - Optimisation des requêtes
-   - Gestion de la mémoire
+This registers:
 
-2. Sécurité :
-   - Validation des entrées
-   - Gestion des exceptions
-   - Journalisation sécurisée
+- `ITerangaService`
+- `IAnsdRegionalStatisticsService`
 
-3. Maintenance :
-   - Mises à jour régulières des données
-   - Vérification de l'intégrité
-   - Sauvegarde des données
+## Maintenance Notes
 
+When the administrative dataset changes:
+
+- keep the published code scheme stable where possible
+- update tests that validate counts and hierarchical consistency
+- avoid documenting hard-coded commune lists unless they come directly from the embedded dataset and are maintained with it
+
+When the ANSD dataset changes:
+
+- update the normalized internal dataset, not the runtime contract shape
+- preserve region code alignment with the administrative dataset
+- keep documentation aligned with [README.md](D:/Projects/Nugets/Teranga.Core.Net/README.md) and [teranga-technical-docs.md](D:/Projects/Nugets/Teranga.Core.Net/teranga-technical-docs.md)
